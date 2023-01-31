@@ -5,9 +5,9 @@
 ** main test
 */
 
-#include "../include/particule.h"
+#include "../include/particle.h"
 
-particule_t *init_particule(void)
+particle_t *init_particle(void)
 {
     
 }
@@ -17,12 +17,12 @@ void event_manager(void)
 
 }
 
-void draw_manager(particule_t *particule)
+void draw_manager(particle_t *particle)
 {
 
 }
 
-void upadate_manager(particule_t *particule)
+void upadate_manager(particle_t *particle)
 {
 
 }

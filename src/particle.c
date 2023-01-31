@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** particule
+** particle
 ** File description:
-** gestion of particule
+** gestion of particle
 */
 
 

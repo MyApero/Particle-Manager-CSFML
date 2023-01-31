@@ -6,7 +6,7 @@
 ##
 
 SRC    =    main.c \
-	    particule.c \
+	    particle.c \
 
 
 OBJ    =    $(SRC:.c=.o)
