@@ -42,7 +42,8 @@ typedef union shape {
 // @param scale_limit 1
 // @param rotation 0
 // @param color {255, 0, 0, 150}
-typedef struct animation {
+typedef struct anim {
+    particles_t *particles;
     shape_type_t particle_shape_type;
     shape_t particle_shape;
     shape_type_t start_shape_type;
@@ -58,7 +59,7 @@ typedef struct animation {
     float rotation;
     sfColor start_color;
     sfColor end_color;
-} maAnim;
+} anim_t;
 
 typedef struct particles {
     shape_type_t shape_type;
@@ -71,4 +72,4 @@ typedef struct particles {
     float rotation_modifier;
     sfColor color;
     sfColor color_modifier;
-} maParticles;
+} particles_t;
