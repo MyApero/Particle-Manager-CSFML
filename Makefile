@@ -5,26 +5,27 @@
 ## makefile
 ##
 
-SRC    =    main.c \
-	    particle.c \
+SRC	=	main.c \
+		particle.c \
 
+OBJ		=	$(SRC:.c=.o)
 
-OBJ    =    $(SRC:.c=.o)
+NAME	=	particle_manager
 
-NAME    =    navy
+INCLUDE	=	-I./include
+CFLAGS	=	-Wall -Wextra -g3
 
-CFLAGS    =     -L lib/ -I /lib/include -I include -lm -lmy
+LDFLAGS	=	-lcsfml-graphics -lcsfml-system
 
-#LDLIBS    =    -lmy
+BOLD	=	\e[1m
+GREEN	=	\e[92m
+WHITE	=	\e[0m
 
-NEWLIB    =    -fsanitize=address
-
-all:     $(NAME)
+all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	@make -C lib
-	gcc -o $(NAME) $(OBJ) $(CFLAGS) -Wall
-	echo -e "compilation complite"
+	gcc $(CFLAGS) -o $(NAME) $(OBJ) $(INCLUDE) $(LDFLAGS)
+	@echo -e "$(BOLD)$(TITLE)$(GREEN)COMPILATION COMPLETE\n$(WHITE)"
 
 valgrind:
 	@make -C lib
@@ -34,7 +35,7 @@ clean:
 	rm -f $(OBJ)
 	rm -f *~
 
-fclean:		clean
+fclean:	clean
 	make fclean -C lib
 	rm -f $(NAME)
 

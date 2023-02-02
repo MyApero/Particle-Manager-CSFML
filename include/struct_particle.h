@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2023
-** include/struct_particle
+** ParticleManager
 ** File description:
-** structur for particle
+** struct_particle
 */
 
 #pragma once
@@ -16,59 +16,59 @@ typedef enum boolean {
     TRUE
 } bool_t;
 
-typedef enum state {
-    ALL,
-    MENU,
-    INGAME_MENU,
-    GAME,
-    FIGHT,
-    DIALOG,
-    GAME_END
-} state_t;
-
-typedef enum p_shape {
+typedef enum shape_type {
     POINT,
     RECT,
+    RECT_OUTLINE,
     CIRLCE,
-    LINE
-} p_shape_t;
+    CIRCLE_OUTLINE
+} shape_type_t;
 
-typedef struct line {
-    sfVector2f point1;
-    sfVector2f point2;
-} line_t;
-
-typedef union shape_data {
-    sfVector2f point;
+typedef union shape {
+    sfVector2f *point;
     sfRectangleShape *rect;
     sfCircleShape *circle;
-    line_t line;
-} shape_data_t;
+} shape_t;
 
-// @param int speed;
-// @param int frequency;
-// @param double life_time;
-// @param p_shape_t start_shape;
-// @param shape_data_t start_shape_data;
-// @param p_shape_t end_shape;
-// @param shape_data_t start_shape_data;
-typedef struct particle_data {
+// @brief Here's all of the default values for this struct :
+// @param particle_shape Rectangle 1:1:1:1
+// @param start_shape Rectangle_outline 100:100:100:100
+// @param end_shape Rectangle 145:145:10:10
+// @param speed 1 (pixels/seconds)
+// @param frequency 10 (per seconds)
+// @param duration 2 (seconds)
+// @param scale 1
+// @param scale_modifier 1 (no negative, shrink < 1, grow > 1)
+// @param scale_limit 1
+// @param rotation 0
+// @param color {255, 0, 0, 150}
+typedef struct animation {
+    shape_type_t particle_shape_type;
+    shape_t particle_shape;
+    shape_type_t start_shape_type;
+    shape_t start_shape;
+    shape_type_t end_shape_type;
+    shape_t end_shape;
     int speed;
     int frequency;
-    double life_time;
-    p_shape_t start_shape;
-    shape_data_t start_shape_data;
-    p_shape_t end_shape;
-    shape_data_t start_shape_data;
-} particle_data_t;
+    float duration;
+    float scale;
+    float scale_modifier;
+    float scale_limit;
+    float rotation;
+    sfColor start_color;
+    sfColor end_color;
+} maAnim;
 
-typedef struct animation {
-    particle_data_t *particle_s;
-    state_t state;
-    struct animation *next;
-} animation_t;
-
-typedef struct game {
-    bool_t running;
-    animation_t *p_animations;
-} game_t;
+typedef struct particles {
+    shape_type_t shape_type;
+    shape_t shape;
+    v2f position;
+    v2f destination;
+    int speed;
+    float scale;
+    float scale_modifier;
+    float rotation_modifier;
+    sfColor color;
+    sfColor color_modifier;
+} maParticles;
