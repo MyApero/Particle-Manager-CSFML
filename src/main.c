@@ -7,47 +7,57 @@
 
 #include "../include/particle.h"
 
-particle_t *init_particle(void)
+particles_t *init_particle(void)
 {
     
 }
 
-void event_manager(void)
+void event_manager(sfRenderWindow *window)
+{
+     sfEvent event;
+    while (sfRenderWindow_pollEvent(window, &event)) {
+        if (event.type == sfEvtClosed)
+            sfRenderWindow_close(window);
+    }
+}
+
+void draw_manager(particles_t *particle)
 {
 
 }
 
-void draw_manager(particle_t *particle)
+void upadate_manager(particles_t *particle)
 {
 
 }
 
-void upadate_manager(particle_t *particle)
+
+
+void render_game()
 {
 
 }
 
 int main(void)
 {
+    game_t *game = malloc(sizeof(game_t));
+
+    initialize_game(game);
+
+    render_game(game);
+
+    big_free(g);
+
     sfVideoMode mode = {800, 600, 32};
-    sfRenderWindow* window;
-    /* Create the main window */
+    sfRenderWindow *window;
     window = sfRenderWindow_create(mode, "SFML window", sfResize | sfClose, NULL);
     if (!window)
         return 84;
     while (sfRenderWindow_isOpen(window)) {
-        /* Process events */
-        sfEvent event;
-        while (sfRenderWindow_pollEvent(window, &event)) {
-            /* Close window : exit */
-            if (event.type == sfEvtClosed)
-                sfRenderWindow_close(window);
-        }
-        /* Clear the screen */
+        event_manager(window);
         sfRenderWindow_clear(window, sfBlack);
         sfRenderWindow_display(window);
     }
-    /* Cleanup resources */
     sfRenderWindow_destroy(window);
     return 0;
 }

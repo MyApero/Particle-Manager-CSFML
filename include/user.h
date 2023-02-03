@@ -7,7 +7,6 @@
 //     struct animation *next;
 // } animation_t;
 
-
 // typedef enum state {
 //     ALL,
 //     MENU,

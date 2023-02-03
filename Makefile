@@ -15,6 +15,8 @@ NAME	=	particle_manager
 INCLUDE	=	-I./include
 CFLAGS	=	-Wall -Wextra -g3
 
+LIB		=	-L./lib/ -lparticle
+
 LDFLAGS	=	-lcsfml-graphics -lcsfml-system
 
 BOLD	=	\e[1m
@@ -24,6 +26,7 @@ WHITE	=	\e[0m
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
+	@make -C lib/particle
 	gcc $(CFLAGS) -o $(NAME) $(OBJ) $(INCLUDE) $(LDFLAGS)
 	@echo -e "$(BOLD)$(TITLE)$(GREEN)COMPILATION COMPLETE\n$(WHITE)"
 

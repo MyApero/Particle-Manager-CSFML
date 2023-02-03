@@ -6,23 +6,40 @@
 */
 
 
-#include "particle.h"
+// #include "particle.h"
+#include <stdio.h>
+#include <SFML/Graphics.h>
 
-// animation_t *create_a_special_animation()
-// {
-//     animation_t *animation = maCreateAnimation();
-//     maAnimationSetFrequency(animation, 10);
+typedef enum type {
+    RECT,
+    CIRCLE
+} type_t;
 
-//     return animation;
-// }
+typedef union my_union {
+    void *m;
+    int *a;
+    float b;
+    struct {
+        char c;
+        char d;
+        char e;
+        char f;
+    };
+} my_union_t;
 
-// animation_t *animation = create_a_special_animation();
+void my_function(void *my_parameter)
+{
+    my_union_t my_union;
+    my_union.m = my_parameter;
+    printf("a: %d, e: %c, b: %f\n", *my_union.a, my_union.e, my_union.b);
+}
 
-// while (SUPRBOUCLE)
-// {
-//     maAnimate(animation, !g->in_menu);
+int main(void)
+{
+    int a = 800;
+    float b = 3;
 
-//     if (key_pressed = 'G')
-//         maDestroyAnimation(animation);
-// }
+    my_function(&a);
 
+    return 0;
+}
