@@ -7,7 +7,14 @@
 
 #include "particle.h"
 
-void anim_set_frequency(anim_t *anim, int frequency)
+void anim_set_frequency(anim_t *anim, float frequency)
 {
-    anim->frequency = frequency;
+    if (frequency < 0)
+        frequency = -frequency;
+    if (frequency == 0)
+        anim->spawn_delay_value = 1000000000.0;
+    else {
+        anim->spawn_delay_value = 1 / frequency;
+        anim->spawn_delay = anim->spawn_delay_value;
+    }
 }

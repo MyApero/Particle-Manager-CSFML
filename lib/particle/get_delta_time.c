@@ -5,9 +5,12 @@
 ** gets delta t
 */
 
-void get_delta_time(game_t *g)
+#include "particle.h"
+
+double get_delta_time(sfClock *game_clock, double *prev_frame_time)
 {
-    sfInt64 now = sfClock_getElapsedTime(g->game_clock).microseconds;
-    g->dt = (now - g->prev_frame_time) / 1000000.0 * GAME_TICK;
-    g->prev_frame_time = now;
+    sfInt64 now = sfClock_getElapsedTime(game_clock).microseconds;
+    double dt = (now - *prev_frame_time) / 1000000.0 * GAME_TICK;
+    *prev_frame_time = now;
+    return dt;
 }

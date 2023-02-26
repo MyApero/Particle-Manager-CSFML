@@ -5,10 +5,24 @@
 ## Compile my lib
 ##
 
-SRC	=	set/set_shape_end.c \
-		set/set_shape_start.c \
-		set/set_shape.c \
-		anim_create.c \
+SRC	=	set/anim_set_color.c \
+		set/anim_set_duration.c \
+		set/anim_set_frequency.c \
+		set/anim_set_rotation.c \
+		set/anim_set_scale_limit.c \
+		set/anim_set_scale_modifier.c \
+		set/anim_set_scale.c \
+		set/anim_set_shape_start.c \
+		set/anim_set_shape.c \
+		set/anim_set_shape_end.c \
+		set/anim_set_speed.c \
+		set/anim_set_is_generating.c \
+		create/anim_create.c \
+		create/particle_create.c \
+		get_delta_time.c \
+		animate_particle.c \
+		anim_render.c \
+		anim_display.c
 
 OBJ	=	$(SRC:.c=.o)
 
@@ -18,23 +32,30 @@ HEADER	=	particle.h
 CFLAGS	=	-g3 -c
 LDFLAGS	=	-lcsfml-graphics -lcsfml-system
 
+BOLD	=	\e[1m
+GREEN	=	\e[92m
+WHITE	=	\e[0m
+BLUE	=	\e[94m
+RED		=	\e[31m
+
 all:	$(NAME)
 
 $(OBJ):	%.o: %.c
-	gcc $(CFLAGS) -o $@ $(INCLUDE) $< $(LDFLAGS)
-	echo -e "$(BOLD)$(BLUE)File $(RED)$@$(BLUE) created.$(WHITE)"
+	@gcc $(CFLAGS) -o $@ $(INCLUDE) $< $(LDFLAGS)
+	@echo -e "$(BOLD)$(BLUE)File $(RED)$@$(BLUE) created.$(WHITE)"
 
 $(NAME):	$(OBJ)
-		mkdir -p ../../include
-		cp particle.h ../../include/
-		cp struct_particle.h ../../include/
-		ar rc $(NAME) $(OBJ)
-		cp $(NAME) ../
+		@mkdir -p ../../include
+		@cp particle.h ../../include/
+		@cp struct_particle.h ../../include/
+		@ar rc $(NAME) $(OBJ)
+		@cp $(NAME) ../
+		@echo -e "$(BOLD)$(GREEN) -- LIB SUCCESSFULLY COMPILED -- $(WHITE)"
 
 clean:
-		rm -f $(OBJ)
+		@rm -f $(OBJ)
 
 fclean:	clean
-		rm -f $(NAME)
+		@rm -f $(NAME)
 
 re:	fclean all

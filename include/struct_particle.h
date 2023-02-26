@@ -40,6 +40,7 @@ typedef struct particles {
     sfColor color;
     sfColor color_modifier;
     double time_elapsed;
+    struct particles *next;
 } particles_t;
 
 // @brief Here's all of the default values for this struct :
@@ -62,12 +63,14 @@ typedef struct anim {
     shape_type_t shape_end_type;
     shape_t shape_end;
     int speed;
-    int frequency;
+    double spawn_delay_value;
+    double spawn_delay;
     float duration;
-    float scale;
+    v2f scale;
     float scale_modifier;
-    float scale_limit;
+    v2f scale_limit;
     float rotation;
-    sfColor start_color;
-    sfColor end_color;
+    sfColor color_start;
+    sfColor color_end;
+    bool_t is_generating;
 } anim_t;

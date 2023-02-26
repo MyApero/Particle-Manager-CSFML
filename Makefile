@@ -2,15 +2,16 @@
 ## EPITECH PROJECT, 2022
 ## Makefile
 ## File description:
-## makefile
+## Compile my files
 ##
 
-SRC	=	main.c \
-		particle.c \
-
-OBJ		=	$(SRC:.c=.o)
-
 NAME	=	particle_manager
+
+SRC	=	src/main.c \
+		src/free_anims.c \
+		src/test_anims.c
+
+OBJ	=	$(SRC:.c=.o)
 
 INCLUDE	=	-I./include
 CFLAGS	=	-Wall -Wextra -g3
@@ -23,39 +24,20 @@ BOLD	=	\e[1m
 GREEN	=	\e[92m
 WHITE	=	\e[0m
 
-all:	$(NAME)
-
-$(NAME):	$(OBJ)
-	@make -C lib/particle
-	gcc $(CFLAGS) -o $(NAME) $(OBJ) $(INCLUDE) $(LDFLAGS)
-	@echo -e "$(BOLD)$(TITLE)$(GREEN)COMPILATION COMPLETE\n$(WHITE)"
-
-valgrind:
-	@make -C lib
-	gcc src/*.c -g3
+all:	$(OBJ)
+		@cd lib/particle && $(MAKE)
+		@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(INCLUDE) $(LIB) $(LDFLAGS)
+		@echo -e "$(BOLD)$(TITLE)$(GREEN)COMPILATION COMPLETE\n$(WHITE)"
 
 clean:
-	rm -f $(OBJ)
-	rm -f *~
+		@cd lib/particle && $(MAKE) clean
+		@rm -f $(OBJ)
 
 fclean:	clean
-	make fclean -C lib
-	rm -f $(NAME)
+		@cd lib/particle && $(MAKE) fclean
+		@rm -f $(NAME)
 
-allclean: fclean
-	rm -f $(USE)
+lib_re:
+		@cd lib/particle && $(MAKE) re
 
-re:	fclean	all
-
-test_build:
-	gcc $(TEST) -o unit_test --coverage -lcriterion -Wall
-
-test_clean:
-	rm -f *.gcno
-	rm -f *.o
-	rm -f *.gcda
-	rm unit_test
-
-test_run: test_build
-	./unit_test
-	make test_clean
+re:	fclean lib_re all

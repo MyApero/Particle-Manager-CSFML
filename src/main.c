@@ -6,58 +6,72 @@
 */
 
 #include "../include/particle.h"
+#include "../include/test.h"
 
-particles_t *init_particle(void)
-{
-    
-}
+#include <stdio.h>
+#include <stdlib.h>
 
 void event_manager(sfRenderWindow *window)
 {
-     sfEvent event;
+    sfEvent event;
     while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed)
+        if (event.type == sfEvtClosed || (event.type == sfEvtKeyPressed &&
+        event.key.code == sfKeyEscape))
             sfRenderWindow_close(window);
     }
 }
 
-void draw_manager(particles_t *particle)
+void render_manager(anim_list_t *anims, double dt)
 {
-
+    for (; anims != NULL; anims = anims->next)
+        anim_render(anims->anim, dt);
 }
 
-void upadate_manager(particles_t *particle)
+void draw_manager(sfRenderWindow *window, anim_list_t *anims)
 {
-
+    sfRenderWindow_clear(window, sfBlack);
+    for (; anims != NULL; anims = anims->next) {
+        printf("in draw_manager %f\n", anims->anim->duration);
+        anim_display(window, anims->anim);
+    }
+    sfRenderWindow_display(window);
 }
 
-
-
-void render_game()
+void render_game(sfRenderWindow *window, sfClock *game_clock,
+anim_list_t *anims)
 {
+    double prev_frame_time = sfClock_getElapsedTime(game_clock).microseconds;
+    double dt;
 
+    while (sfRenderWindow_isOpen(window)) {
+        dt = get_delta_time(game_clock, &prev_frame_time);
+        printf("dt: %f\n", dt);
+
+        event_manager(window);
+
+        render_manager(anims, dt);
+
+        draw_manager(window, anims);
+    }
 }
 
 int main(void)
 {
-    game_t *game = malloc(sizeof(game_t));
+    sfVideoMode video_mode = { WIDTH, HEIGHT, 32 };
+    sfRenderWindow *window = sfRenderWindow_create(video_mode, "SFML window",
+    sfClose | sfResize, NULL);
+    sfClock *game_clock = sfClock_create();
+    anim_list_t *anims = create_test_anims();
 
-    initialize_game(game);
-
-    render_game(game);
-
-    big_free(g);
-
-    sfVideoMode mode = {800, 600, 32};
-    sfRenderWindow *window;
-    window = sfRenderWindow_create(mode, "SFML window", sfResize | sfClose, NULL);
     if (!window)
         return 84;
-    while (sfRenderWindow_isOpen(window)) {
-        event_manager(window);
-        sfRenderWindow_clear(window, sfBlack);
-        sfRenderWindow_display(window);
-    }
+
+    sfRenderWindow_setFramerateLimit(window, FPS);
+
+    render_game(window, game_clock, anims);
+
     sfRenderWindow_destroy(window);
+    sfClock_destroy(game_clock);
+    free_anims(anims);
     return 0;
 }
