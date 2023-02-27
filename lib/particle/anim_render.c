@@ -18,13 +18,14 @@ static void append_particle(particles_t **particles, particles_t *new_particle)
     particle->next = new_particle;
 }
 
-void anim_render(anim_t *animation, double dt)
+void anim_render(anim_t *anim, double dt)
 {
-    particles_t *particle = animation->particles;
-    animation->spawn_delay -= dt;
-    if (animation->spawn_delay < 0) {
-        append_particle(&animation->particles, particle_create(animation));
-        animation->spawn_delay = animation->spawn_delay_value;
+    particles_t *particle = anim->particles;
+    anim->spawn_delay -= dt;
+    anim->time_elapsed += dt;
+    if (anim->time_elapsed < anim->duration && anim->spawn_delay < 0) {
+        append_particle(&anim->particles, particle_create(anim));
+        anim->spawn_delay = anim->spawn_delay_value;
     }
     for (; particle != NULL; particle = particle->next)
         animate_particle(particle, dt);

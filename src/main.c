@@ -23,15 +23,15 @@ void event_manager(sfRenderWindow *window)
 
 void render_manager(anim_list_t *anims, double dt)
 {
-    for (; anims != NULL; anims = anims->next)
+    for (; anims != NULL; anims = anims->next) {
         anim_render(anims->anim, dt);
+    }
 }
 
 void draw_manager(sfRenderWindow *window, anim_list_t *anims)
 {
     sfRenderWindow_clear(window, sfBlack);
     for (; anims != NULL; anims = anims->next) {
-        // printf("in draw_manager %f\n", anims->anim->duration);
         anim_display(window, anims->anim);
     }
     sfRenderWindow_display(window);
@@ -53,7 +53,7 @@ anim_list_t *anims)
 
     while (sfRenderWindow_isOpen(window)) {
         dt = get_delta_time(game_clock, &prev_frame_time);
-        printf("Particles count: %d\n", get_particles_number(anims->anim->particles));
+        printf("Particles count: %d, time_elapsed: %f\n", get_particles_number(anims->anim->particles), anims->anim->time_elapsed);
 
         event_manager(window);
 

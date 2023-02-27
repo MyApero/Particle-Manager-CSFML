@@ -15,7 +15,12 @@
 #include "struct_particle.h"
 
 
-#define GAME_TICK 20
+#define GAME_TICK 1
+#define ANIM_SPEED 50
+#define ANIM_FREQUENCY 2
+#define ANIM_DURATION 5
+#define ANIM_COLOR sfColor_fromRGBA(255, 0, 0, 150)
+#define ANIM_SCALE (v2f){1, 1}
 
 /*------------------------------PROGRAMME-------------------------------------*/
 
@@ -31,7 +36,7 @@ void anim_set_speed(anim_t *anim, int speed);
 void anim_set_frequency(anim_t *anim, float frequency);
 void anim_set_duration(anim_t *anim, float duration);
 void anim_set_scale(anim_t *anim, sfVector2f scale);
-void anim_set_scale_modifier(anim_t *anim, float scale_modifier);
+void anim_set_scale_modifier(anim_t *anim, v2f scale_modifier);
 void anim_set_scale_limit(anim_t *anim, sfVector2f scale_limit);
 void anim_set_is_generating(anim_t *anim, bool_t is_generating);
 void anim_set_rotation(anim_t *anim, float rotation);

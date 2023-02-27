@@ -32,8 +32,8 @@ typedef struct particles {
     v2f position;
     v2f destination;
     int speed;
-    float scale;
-    float scale_modifier;
+    v2f scale;
+    v2f scale_modifier;
     float rotation_modifier;
     sfColor color;
     sfColor color_modifier;
@@ -64,8 +64,9 @@ typedef struct anim {
     double spawn_delay_value;
     double spawn_delay;
     float duration;
+    double time_elapsed;
     v2f scale;
-    float scale_modifier;
+    v2f scale_modifier;
     v2f scale_limit;
     float rotation;
     sfColor color_start;
