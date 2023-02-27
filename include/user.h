@@ -24,4 +24,3 @@ anim_list_t *create_test_anims(void);
 void event_manager(sfRenderWindow *window);
 void render_manager(anim_list_t *anims, double dt);
 void draw_manager(sfRenderWindow *window, anim_list_t *anims);
-

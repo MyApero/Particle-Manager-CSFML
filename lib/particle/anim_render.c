@@ -23,9 +23,11 @@ void anim_render(anim_t *anim, double dt)
     particles_t *particle = anim->particles;
     anim->spawn_delay -= dt;
     anim->time_elapsed += dt;
-    if (anim->time_elapsed < anim->duration && anim->spawn_delay < 0) {
-        append_particle(&anim->particles, particle_create(anim));
-        anim->spawn_delay = anim->spawn_delay_value;
+    if (anim->time_elapsed < anim->duration) {
+        while (anim->spawn_delay < 0) {
+            append_particle(&anim->particles, particle_create(anim));
+            anim->spawn_delay += anim->spawn_delay_value;
+        }
     }
     for (; particle != NULL; particle = particle->next)
         animate_particle(particle, dt);

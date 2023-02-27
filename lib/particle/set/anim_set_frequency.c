@@ -15,6 +15,6 @@ void anim_set_frequency(anim_t *anim, float frequency)
         anim->spawn_delay_value = 1000000000.0;
     else {
         anim->spawn_delay_value = 1 / frequency;
-        anim->spawn_delay = anim->spawn_delay_value;
+        anim->spawn_delay = 0;
     }
 }

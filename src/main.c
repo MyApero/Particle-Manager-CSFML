@@ -26,7 +26,8 @@ anim_list_t *anims)
 
     while (sfRenderWindow_isOpen(window)) {
         dt = get_delta_time(game_clock, &prev_frame_time);
-        printf("Particles count: %d, time_elapsed: %f\n", get_particles_number(anims->anim->particles), anims->anim->time_elapsed);
+        printf("Particles count: %d, time_elapsed: %f\n", get_particles_number(
+            anims->anim->particles), anims->anim->time_elapsed);
 
         event_manager(window);
 
@@ -47,7 +48,7 @@ int main(void)
     if (!window)
         return 84;
 
-    sfRenderWindow_setFramerateLimit(window, FPS);
+    sfRenderWindow_setFramerateLimit(window, 60);
 
     execute(window, game_clock, anims);
 

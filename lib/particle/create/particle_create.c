@@ -22,7 +22,8 @@ particles_t *particle_create(anim_t *anim)
     particles_t *particle = malloc(sizeof(particles_t));
 
     particle->color = anim->color_start;
-    particle->position = (v2f){200, 200};
+    particle->position = (v2f){0, 0};
+    particle->destination = (v2f){0, 0};
     particle->shape_type = RECT;
     particle->shape.rect = create_default_shape(particle);
     particle->speed = anim->speed;

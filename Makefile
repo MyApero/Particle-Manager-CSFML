@@ -16,7 +16,7 @@ SRC	=	src/main.c \
 
 OBJ	=	$(SRC:.c=.o)
 
-INCLUDE	=	-I./include
+INCLUDE	=	-I./include -fsanitize=address
 CFLAGS	=	-Wall -Wextra -g3
 
 LIB		=	-L./lib/ -lparticle

@@ -19,7 +19,7 @@ anim_t *anim_create(void)
 {
     anim_t *anim = malloc(sizeof(anim_t));
     anim->particles = NULL;
-    anim->color_start = ANIM_COLOR;
+    anim->color_start = sfColor_fromRGBA(ANIM_COLOR);
     anim->color_end = anim->color_start;
     anim->particle_shape_type = RECT;
     anim->particle_shape.rect = create_default_shape(anim->color_start);
@@ -31,9 +31,9 @@ anim_t *anim_create(void)
     anim_set_frequency(anim, ANIM_FREQUENCY);
     anim->duration = ANIM_DURATION;
     anim->time_elapsed = 0;
-    anim->scale = ANIM_SCALE;
-    anim->scale_modifier = ANIM_SCALE;
-    anim->scale_limit = ANIM_SCALE;
+    anim->scale = (v2f){ANIM_SCALE};
+    anim->scale_modifier = (v2f){ANIM_SCALE};
+    anim->scale_limit = (v2f){ANIM_SCALE};
     anim->rotation = 0;
     anim->is_generating = TRUE;
     return anim;

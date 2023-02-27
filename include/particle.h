@@ -19,8 +19,9 @@
 #define ANIM_SPEED 50
 #define ANIM_FREQUENCY 2
 #define ANIM_DURATION 5
-#define ANIM_COLOR sfColor_fromRGBA(255, 0, 0, 150)
-#define ANIM_SCALE (v2f){1, 1}
+#define ANIM_COLOR 255, 0, 0, 150
+#define ANIM_SCALE 1, 1
+#define PARTICLE_POS 400, 300
 
 /*------------------------------PROGRAMME-------------------------------------*/
 
