@@ -5,7 +5,7 @@
 ** test_anims
 */
 
-#include "../include/test.h"
+#include "../include/user.h"
 #include "../include/particle.h"
 #include <stdlib.h>
 

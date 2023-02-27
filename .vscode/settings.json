@@ -3,6 +3,6 @@
         "graphics.h": "c",
         "stdio.h": "c",
         "particle.h": "c",
-        "test.h": "c"
+        "user.h": "c"
     }
 }

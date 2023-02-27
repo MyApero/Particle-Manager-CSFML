@@ -1,18 +1,27 @@
+/*
+** EPITECH PROJECT, 2023
+** ParticleManager
+** File description:
+** test
+*/
 
-// This is to be created by the user
+#pragma once
 
-// typedef struct animation {
-//     particle_data_t *particle_s;
-//     state_t state;
-//     struct animation *next;
-// } animation_t;
+#define WIDTH 1000
+#define HEIGHT 600
+#define FPS 60
 
-// typedef enum state {
-//     ALL,
-//     MENU,
-//     INGAME_MENU,
-//     GAME,
-//     FIGHT,
-//     DIALOG,
-//     GAME_END
-// } state_t;
+#include "particle.h"
+
+typedef struct anim_list {
+    anim_t *anim;
+    struct anim_list *next;
+} anim_list_t;
+
+void initialize(void);
+void free_anims(anim_list_t *anims);
+anim_list_t *create_test_anims(void);
+void event_manager(sfRenderWindow *window);
+void render_manager(anim_list_t *anims, double dt);
+void draw_manager(sfRenderWindow *window, anim_list_t *anims);
+

@@ -15,6 +15,7 @@ static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
     else if (shape_type == CIRCLE || shape_type == CIRCLE_OUTLINE)
         sfCircleShape_setPosition(shape.circle, pos);
 }
+
 void animate_particle(particles_t *particle, double dt)
 {
     particle->position.x += particle->speed * dt;

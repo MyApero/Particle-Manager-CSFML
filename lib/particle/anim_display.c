@@ -13,7 +13,7 @@ void anim_display(sfRenderWindow *win, anim_t *animation)
     for (; particle != NULL; particle = particle->next) {
         if (particle->shape_type == RECT)
             sfRenderWindow_drawRectangleShape(win, particle->shape.rect, NULL);
-        else if (particle->shape_type == CIRCLE)
+        if (particle->shape_type == CIRCLE)
             sfRenderWindow_drawCircleShape(win, particle->shape.circle, NULL);
     }
 }

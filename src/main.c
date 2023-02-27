@@ -5,37 +5,10 @@
 ** main test
 */
 
-#include "../include/particle.h"
-#include "../include/test.h"
+#include "../include/user.h"
 
 #include <stdio.h>
 #include <stdlib.h>
-
-void event_manager(sfRenderWindow *window)
-{
-    sfEvent event;
-    while (sfRenderWindow_pollEvent(window, &event)) {
-        if (event.type == sfEvtClosed || (event.type == sfEvtKeyPressed &&
-        event.key.code == sfKeyEscape))
-            sfRenderWindow_close(window);
-    }
-}
-
-void render_manager(anim_list_t *anims, double dt)
-{
-    for (; anims != NULL; anims = anims->next) {
-        anim_render(anims->anim, dt);
-    }
-}
-
-void draw_manager(sfRenderWindow *window, anim_list_t *anims)
-{
-    sfRenderWindow_clear(window, sfBlack);
-    for (; anims != NULL; anims = anims->next) {
-        anim_display(window, anims->anim);
-    }
-    sfRenderWindow_display(window);
-}
 
 static int get_particles_number(particles_t *particles)
 {
@@ -45,7 +18,7 @@ static int get_particles_number(particles_t *particles)
     return i;
 }
 
-void render_game(sfRenderWindow *window, sfClock *game_clock,
+void execute(sfRenderWindow *window, sfClock *game_clock,
 anim_list_t *anims)
 {
     double prev_frame_time = sfClock_getElapsedTime(game_clock).microseconds;
@@ -76,7 +49,7 @@ int main(void)
 
     sfRenderWindow_setFramerateLimit(window, FPS);
 
-    render_game(window, game_clock, anims);
+    execute(window, game_clock, anims);
 
     sfRenderWindow_destroy(window);
     sfClock_destroy(game_clock);
