@@ -9,5 +9,6 @@
 
 void animate_particle(particles_t *particle, double dt)
 {
-    particle->position.x += 50 * dt;
+    particle->position.x += particle->speed * dt;
+    particle->time_elapsed += dt;
 }

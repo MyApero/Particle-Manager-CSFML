@@ -15,7 +15,6 @@ typedef enum boolean {
 } bool_t;
 
 typedef enum shape_type {
-    POINT,
     RECT,
     RECT_OUTLINE,
     CIRCLE,
@@ -23,7 +22,6 @@ typedef enum shape_type {
 } shape_type_t;
 
 typedef union shape {
-    sfVector2f *point;
     sfRectangleShape *rect;
     sfCircleShape *circle;
 } shape_t;

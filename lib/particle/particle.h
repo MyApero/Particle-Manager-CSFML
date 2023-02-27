@@ -19,10 +19,11 @@
 
 /*------------------------------PROGRAMME-------------------------------------*/
 
-void anim_display(sfRenderWindow *win, anim_t *animation);
-void anim_render(anim_t *animation, double dt);
 anim_t *anim_create(void);
 particles_t *particle_create(anim_t *anim);
+void anim_render(anim_t *animation, double dt);
+void anim_display(sfRenderWindow *win, anim_t *animation);
+void anim_free(anim_t *animation);
 void anim_set_shape(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_shape_start(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_shape_end(anim_t *anim, shape_type_t shape_type, void *shape);

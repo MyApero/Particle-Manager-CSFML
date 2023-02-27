@@ -22,7 +22,8 @@ SRC	=	set/anim_set_color.c \
 		get_delta_time.c \
 		animate_particle.c \
 		anim_render.c \
-		anim_display.c
+		anim_display.c \
+		anim_free.c
 
 OBJ	=	$(SRC:.c=.o)
 

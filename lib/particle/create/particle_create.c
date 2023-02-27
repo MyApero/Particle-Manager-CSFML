@@ -23,6 +23,9 @@ particles_t *particle_create(anim_t *anim)
     // particle->color_modifier = particle->color_start;
     particle->shape_type = RECT;
     particle->shape.rect = create_default_shape(particle->color);
+    particle->speed = anim->speed;
+    particle->time_elapsed = 0;
+    particle->next = NULL;
 
     // shape_type_t shape_type;
     // shape_t shape;
