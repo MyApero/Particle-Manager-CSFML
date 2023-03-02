@@ -20,8 +20,8 @@ SRC	=	set/anim_set_color.c \
 		create/anim_create.c \
 		create/particle_create.c \
 		get_delta_time.c \
-		animate_particle.c \
-		anim_render.c \
+		particle_update.c \
+		anim_update.c \
 		anim_display.c \
 		anim_free.c
 

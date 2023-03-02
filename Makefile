@@ -11,7 +11,7 @@ SRC	=	src/main.c \
 		src/free_anims.c \
 		src/test_anims.c \
 		src/event_manager.c \
-		src/render_manager.c \
+		src/update_manager.c \
 		src/draw_manager.c
 
 OBJ	=	$(SRC:.c=.o)

@@ -31,7 +31,7 @@ anim_list_t *anims)
 
         event_manager(window);
 
-        render_manager(anims, dt);
+        update_manager(anims, dt);
 
         draw_manager(window, anims);
     }

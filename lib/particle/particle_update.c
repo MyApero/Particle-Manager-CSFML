@@ -16,7 +16,7 @@ static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
         sfCircleShape_setPosition(shape.circle, pos);
 }
 
-void animate_particle(particles_t *particle, double dt)
+void particle_update(particles_t *particle, double dt)
 {
     particle->position.x += (rand() % 2) * particle->speed * dt;
     particle->position.y += (rand() % 2) * particle->speed * dt;
