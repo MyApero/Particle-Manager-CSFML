@@ -18,8 +18,8 @@ static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
 
 void particle_update(particles_t *particle, double dt)
 {
-    particle->position.x += (rand() % 2) * particle->speed * dt;
-    particle->position.y += (rand() % 2) * particle->speed * dt;
+    particle->position.x += particle->moove.x * particle->speed * dt;
+    particle->position.y += particle->moove.y * particle->speed * dt;
     particle->time_elapsed += dt;
     set_position(particle->shape_type, particle->shape, particle->position);
 }

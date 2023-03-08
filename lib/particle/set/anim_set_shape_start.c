@@ -10,8 +10,8 @@
 void anim_set_shape_start(anim_t *anim, shape_type_t shape_type, void *shape)
 {
     anim->shape_start_type = shape_type;
-    if (shape_type == RECT)
-        anim->shape_start.rect = shape;
-    if (shape_type == CIRCLE)
-        anim->shape_start.circle = shape;
+    switch (shape_type) {
+        case 0 ... 1: anim->shape_start.rect = shape; break;
+        case 2 ... 3: anim->shape_start.circle = shape; break;
+    };
 }

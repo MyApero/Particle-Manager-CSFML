@@ -17,12 +17,16 @@
 
 
 #define GAME_TICK 1
-#define ANIM_SPEED 50
+#define ANIM_SPEED 1
 #define ANIM_FREQUENCY 2
 #define ANIM_DURATION 5
 #define ANIM_COLOR 255, 0, 0, 150
-#define ANIM_SCALE 1, 1
-#define PARTICLE_POS 400, 300
+#define ANIM_SCALE 1, 
+#define PARTICLE_POS 0, 0
+#define PARTICLE_SIZE 25, 25
+#define SHAPE_START 0, 0
+#define SHAPE_END 0, 200
+#define SHAPE_SIZE 100, 100
 
 /*------------------------------PROGRAMME-------------------------------------*/
 
@@ -47,3 +51,4 @@ void anim_set_rgb(anim_t *anim);
 void particle_update(particles_t *particle, double dt);
 void anim_destroy(anim_t *animation);
 double get_delta_time(sfClock *game_clock, double *prev_frame_time);
+v2f particle_place_created(shape_t shape, shape_type_t shape_type);

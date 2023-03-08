@@ -7,11 +7,14 @@
 
 #include "../include/user.h"
 #include "../include/particle.h"
+#include <SFML/Graphics/RectangleShape.h>
+#include <SFML/Graphics/Types.h>
 #include <stdlib.h>
 
 anim_t *create_first_anim(void)
 {
     anim_t *anim = anim_create();
+
     anim_set_duration(anim, 3.5);
     anim_set_frequency(anim, 1000);
     anim_set_duration(anim, 3);

@@ -21,7 +21,7 @@ CFLAGS	=	-Wall -Wextra -g3
 
 LIB		=	-L./lib/ -lparticle
 
-LDFLAGS	=	-lcsfml-graphics -lcsfml-system
+LDFLAGS	=	-lcsfml-graphics -lcsfml-system -lm
 
 BOLD	=	\e[1m
 GREEN	=	\e[92m

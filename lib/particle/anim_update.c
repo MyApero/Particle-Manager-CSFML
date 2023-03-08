@@ -7,6 +7,7 @@
 
 #include "particle.h"
 #include "struct_particle.h"
+#include <SFML/Graphics/RectangleShape.h>
 
 static void append_particle(anim_t *anim, particles_t **particles,
 particles_t *new_particle)

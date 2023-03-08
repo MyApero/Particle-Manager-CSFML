@@ -19,6 +19,7 @@ SRC	=	set/anim_set_color.c \
 		set/anim_set_is_generating.c \
 		create/anim_create.c \
 		create/particle_create.c \
+		create/create_particle_form.c \
 		get_delta_time.c \
 		particle_update.c \
 		anim_update.c \
@@ -31,7 +32,7 @@ INCLUDE	= -I./
 NAME	=	libparticle.a
 HEADER	=	particle.h
 CFLAGS	=	-g3 -c
-LDFLAGS	=	-lcsfml-graphics -lcsfml-system
+LDFLAGS	=	-lcsfml-graphics -lcsfml-system -lm
 
 BOLD	=	\e[1m
 GREEN	=	\e[92m
