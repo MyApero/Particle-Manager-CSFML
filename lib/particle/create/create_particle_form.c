@@ -16,7 +16,6 @@ static v2f created_from_rect(sfRectangleShape *rect)
     sfFloatRect bounds = sfRectangleShape_getGlobalBounds(rect);
     v2f new_pos;
 
-    printf("Size = %f, %f, %f, %f\n", bounds.left, bounds.top, bounds.height, bounds.width);
     if (abs((int) bounds.width) > 1e-5)
         new_pos.x = rand() % ((int) bounds.width) + bounds.left;
     else
@@ -25,7 +24,6 @@ static v2f created_from_rect(sfRectangleShape *rect)
         new_pos.y = rand() % ((int) bounds.height) + bounds.top;
     else
         new_pos.y = bounds.top;
-    printf("%f, %f\n", new_pos.x, new_pos.y);
     return new_pos;
 }
 

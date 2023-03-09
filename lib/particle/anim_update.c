@@ -35,6 +35,12 @@ void anim_update(anim_t *anim, double dt)
             anim->spawn_delay += anim->spawn_delay_value;
         }
     }
-    for (; particle != NULL; particle = particle->next)
-        particle_update(particle, dt);
+    if (particle == NULL && anim->time_elapsed > anim->duration) {
+        anim_free(&anim);
+        return;
+    }
+    for (particles_t *prev = particle; particle != NULL;
+    prev = particle, particle = particle->next) {
+        particle_update(particle, prev, anim, dt);
+    }
 }

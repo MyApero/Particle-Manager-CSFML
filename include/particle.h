@@ -12,6 +12,7 @@
 #include <SFML/Audio.h>
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "struct_particle.h"
 
@@ -34,7 +35,7 @@ anim_t *anim_create(void);
 particles_t *particle_create(anim_t *anim);
 void anim_update(anim_t *animation, double dt);
 void anim_display(sfRenderWindow *win, anim_t *animation);
-void anim_free(anim_t *animation);
+void anim_free(anim_t **animation);
 void anim_set_shape(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_shape_start(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_shape_end(anim_t *anim, shape_type_t shape_type, void *shape);
@@ -48,7 +49,11 @@ void anim_set_is_generating(anim_t *anim, bool_t is_generating);
 void anim_set_rotation(anim_t *anim, float rotation);
 void anim_set_color(anim_t *anim, sfColor color, sfColor end_color);
 void anim_set_rgb(anim_t *anim);
-void particle_update(particles_t *particle, double dt);
+void particle_update(particles_t *particle, particles_t *prev,
+anim_t *anim, double dt);
 void anim_destroy(anim_t *animation);
 double get_delta_time(sfClock *game_clock, double *prev_frame_time);
 v2f particle_place_created(shape_t shape, shape_type_t shape_type);
+void destroy_shape(shape_type_t shape_type, shape_t shape);
+particles_t *particle_free(particles_t *prev, particles_t *particle,
+anim_t *anim);

@@ -13,6 +13,6 @@ void free_anims(anim_list_t *anims)
     if (anims == NULL)
         return;
     free_anims(anims->next);
-    anim_free(anims->anim);
+    anim_free(&anims->anim);
     free(anims);
 }

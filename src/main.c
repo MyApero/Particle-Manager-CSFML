@@ -26,11 +26,14 @@ anim_list_t *anims)
 
     while (sfRenderWindow_isOpen(window)) {
         dt = get_delta_time(game_clock, &prev_frame_time);
-        printf("Particles count: %d, time_elapsed: %f\n", get_particles_number(
-            anims->anim->particles), anims->anim->time_elapsed);
-
+        printf("Particles count: %d, time_elapsed: %f\n",
+            get_particles_number( anims->anim->particles),
+            anims->anim->time_elapsed);
+        if (anims->anim->particles)
+            printf("1particle_pos: %f, %f\n",
+                anims->anim->particles->position.x,
+                anims->anim->particles->position.y);
         event_manager(window);
-
         update_manager(anims, dt);
 
         draw_manager(window, anims);

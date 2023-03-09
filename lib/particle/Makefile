@@ -24,7 +24,8 @@ SRC	=	set/anim_set_color.c \
 		particle_update.c \
 		anim_update.c \
 		anim_display.c \
-		anim_free.c
+		anim_free.c \
+		particle_free.c
 
 OBJ	=	$(SRC:.c=.o)
 

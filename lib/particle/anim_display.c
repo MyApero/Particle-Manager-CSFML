@@ -11,6 +11,8 @@
 void anim_display(sfRenderWindow *win, anim_t *animation)
 {
     particles_t *particle = animation->particles;
+    if (!(animation))
+        return;
     sfRenderWindow_drawRectangleShape(win, animation->shape_start.rect, NULL);
     sfRenderWindow_drawRectangleShape(win, animation->shape_end.rect, NULL);
     for (; particle != NULL; particle = particle->next) {
