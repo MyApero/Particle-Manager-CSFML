@@ -20,12 +20,16 @@ SRC	=	set/anim_set_color.c \
 		create/anim_create.c \
 		create/particle_create.c \
 		create/create_particle_form.c \
+		utils/v2f_operations.c \
+		utils/vector_norm.c \
 		get_delta_time.c \
 		particle_update.c \
 		anim_update.c \
 		anim_display.c \
-		anim_free.c \
-		particle_free.c
+		destroy_shape.c \
+		anim_destroy.c \
+		is_anim_ended.c \
+		particle_destroy.c
 
 OBJ	=	$(SRC:.c=.o)
 

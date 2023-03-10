@@ -31,7 +31,7 @@ typedef struct particles {
     shape_t shape;
     v2f position;
     v2f destination;
-    v2f moove;
+    v2f move;
     int speed;
     v2f scale;
     v2f scale_modifier;
@@ -73,4 +73,6 @@ typedef struct anim {
     sfColor color_start;
     sfColor color_end;
     bool_t is_generating;
+    struct anim *next;
+    struct anim *previous;
 } anim_t;

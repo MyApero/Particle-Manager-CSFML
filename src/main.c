@@ -19,23 +19,15 @@ static int get_particles_number(particles_t *particles)
 }
 
 void execute(sfRenderWindow *window, sfClock *game_clock,
-anim_list_t *anims)
+anim_t *anims)
 {
     double prev_frame_time = sfClock_getElapsedTime(game_clock).microseconds;
     double dt;
 
     while (sfRenderWindow_isOpen(window)) {
         dt = get_delta_time(game_clock, &prev_frame_time);
-        printf("Particles count: %d, time_elapsed: %f\n",
-            get_particles_number( anims->anim->particles),
-            anims->anim->time_elapsed);
-        if (anims->anim->particles)
-            printf("1particle_pos: %f, %f\n",
-                anims->anim->particles->position.x,
-                anims->anim->particles->position.y);
         event_manager(window);
         update_manager(anims, dt);
-
         draw_manager(window, anims);
     }
 }
@@ -46,7 +38,7 @@ int main(void)
     sfRenderWindow *window = sfRenderWindow_create(video_mode, "SFML window",
     sfClose | sfResize, NULL);
     sfClock *game_clock = sfClock_create();
-    anim_list_t *anims = create_test_anims();
+    anim_t *anims = create_first_anim();
 
     if (!window)
         return 84;

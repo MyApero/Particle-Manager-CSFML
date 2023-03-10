@@ -6,7 +6,6 @@
 */
 
 #include "particle.h"
-#include "struct_particle.h"
 #include <SFML/Graphics/RectangleShape.h>
 
 static void append_particle(anim_t *anim, particles_t **particles,
@@ -22,10 +21,14 @@ particles_t *new_particle)
     particle->next = new_particle;
 }
 
+// return -1 if anim is done and is free
 void anim_update(anim_t *anim, double dt)
 {
-    particles_t *particle = anim->particles;
+    particles_t *particle;
+    particles_t *save_next;
 
+    if (anim == NULL)
+        return;
     anim->spawn_delay -= dt;
     anim->time_elapsed += dt;
     if (anim->time_elapsed < anim->duration) {
@@ -35,12 +38,14 @@ void anim_update(anim_t *anim, double dt)
             anim->spawn_delay += anim->spawn_delay_value;
         }
     }
-    if (particle == NULL && anim->time_elapsed > anim->duration) {
-        anim_free(&anim);
-        return;
+    while (particle_update(anim->particles, dt) == -1) {
+        save_next = anim->particles->next;
+        particle_destroy(anim->particles);
+        anim->particles = save_next;
     }
-    for (particles_t *prev = particle; particle != NULL;
-    prev = particle, particle = particle->next) {
-        particle_update(particle, prev, anim, dt);
-    }
+    particle = anim->particles;
+    if (particle != NULL)
+        particle = particle->next;
+    for (; particle != NULL; particle = particle->next)
+        particle_update(particle, dt);
 }

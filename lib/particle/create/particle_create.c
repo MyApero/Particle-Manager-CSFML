@@ -18,17 +18,11 @@ static sfRectangleShape *create_default_shape(particles_t *particle)
     return rect;
 }
 
-static v2f particle_moove(particles_t *particle)
+static v2f set_movement(v2f spawn_pos, v2f dest, int speed)
 {
-    v2f moove;
-    int dist = sqrt(pow(particle->destination.x + particle->position.x,
-    2) + pow(particle->destination.y + particle->position.y, 2));
-
-    moove.x = ((particle->destination.x - particle->position.x) / dist);
-    moove.y = ((particle->destination.y - particle->position.y) / dist);
-
-    return moove;
-
+    v2f direction = { dest.x - spawn_pos.x, dest.y - spawn_pos.y };
+    float dir_norm = vector_norm(direction);
+    return float_multiply_v2f(direction, 1 / dir_norm);
 }
 
 particles_t *particle_create(anim_t *anim)
@@ -40,10 +34,11 @@ particles_t *particle_create(anim_t *anim)
     anim->shape_start_type);
     particle->destination = particle_place_created(anim->shape_end,
     anim->shape_end_type);
-    particle->moove = particle_moove(particle);
+    particle->speed = anim->speed;
+    particle->move = set_movement(particle->position, particle->destination,
+    particle->speed);
     particle->shape_type = RECT;
     particle->shape.rect = create_default_shape(particle);
-    particle->speed = anim->speed;
     particle->time_elapsed = 0;
     particle->next = NULL;
     return particle;

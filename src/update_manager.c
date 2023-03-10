@@ -7,11 +7,11 @@
 
 #include "../include/user.h"
 
-void update_manager(anim_list_t *anims, double dt)
+void update_manager(anim_t *anims, double dt)
 {
-    anim_set_color(anims->anim, sfColor_fromRGBA(rand() % 255, rand() % 255,
-        rand() % 255, 150), sfColor_fromRGB(0, 0, 0));
-    for (; anims != NULL && anims->anim; anims = anims->next) {
-        anim_update(anims->anim, dt);
+    for (anim_t *anim = anims; anim != NULL; anim = anim->next) {
+        anim_set_color(anim, sfColor_fromRGBA(rand() % 255, rand() % 255,
+            rand() % 255, 150), sfColor_fromRGB(0, 0, 0));
+        anim_update(anim, dt);
     }
 }

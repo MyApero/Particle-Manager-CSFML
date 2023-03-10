@@ -3,6 +3,8 @@
         "graphics.h": "c",
         "stdio.h": "c",
         "particle.h": "c",
-        "user.h": "c"
+        "user.h": "c",
+        "struct_particle.h": "c",
+        "rectangleshape.h": "c"
     }
 }

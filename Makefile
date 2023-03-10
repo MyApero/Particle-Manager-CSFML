@@ -8,7 +8,7 @@
 NAME	=	particle_manager
 
 SRC	=	src/main.c \
-		src/free_anims.c \
+		src/destroy_anims.c \
 		src/test_anims.c \
 		src/event_manager.c \
 		src/update_manager.c \

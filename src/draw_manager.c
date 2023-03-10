@@ -7,11 +7,11 @@
 
 #include "../include/user.h"
 
-void draw_manager(sfRenderWindow *window, anim_list_t *anims)
+void draw_manager(sfRenderWindow *window, anim_t *anims)
 {
     sfRenderWindow_clear(window, sfBlack);
-    for (; anims != NULL; anims = anims->next) {
-        anim_display(window, anims->anim);
+    for (anim_t *anim = anims; anim != NULL; anim = anim->next) {
+        anim_display(window, anim);
     }
     sfRenderWindow_display(window);
 }
