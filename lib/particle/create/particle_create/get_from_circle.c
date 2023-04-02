@@ -20,12 +20,12 @@ v2f get_pos_from_circle_outline(sfCircleShape *circle)
     return point;
 }
 
-v2f get_pos_from_circle(sfCircleShape *circle)
+v2f get_from_circle(sfCircleShape *circle)
 {
     sfVector2f random_point;
     v2f center = sfCircleShape_getPosition(circle);
     float radius = sfCircleShape_getRadius(circle);
-    float angle = ((float)rand() / RAND_MAX) * 2 * M_PI;
+    float angle = ((float)rand() / RAND_MAX) * 2 * PI;
     float r = ((float)rand() / RAND_MAX) * radius;
     sfVector2f random_polar = {r * cosf(angle), r * sinf(angle)};
 

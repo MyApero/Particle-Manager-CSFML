@@ -13,7 +13,7 @@ static sfRectangleShape *create_shape_start(void)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
 
-    sfRectangleShape_setPosition(rect, (v2f){150, 150});
+    sfRectangleShape_setPosition(rect, (v2f){500, 150});
     sfRectangleShape_setSize(rect, (v2f){20, 20});
     sfRectangleShape_setFillColor(rect, sfColor_fromRGBA(170, 250, 210, 2));
     return rect;
@@ -40,7 +40,7 @@ static sfCircleShape *create_shape_part(void)
     return circle;
 }
 
-anim_t *create_third_anim(void)
+anim_t *create_anim_bubbles(void)
 {
     anim_t *anim = anim_create();
 

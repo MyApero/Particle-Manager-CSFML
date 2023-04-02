@@ -9,7 +9,7 @@
 #include <SFML/Graphics/Rect.h>
 #include <stdlib.h>
 
-v2f created_from_rect(sfFloatRect bounds)
+v2f get_from_rect(sfFloatRect bounds)
 {
     v2f new_pos;
 

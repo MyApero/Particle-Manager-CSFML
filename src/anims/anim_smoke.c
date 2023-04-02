@@ -29,7 +29,7 @@ static sfRectangleShape *create_shape_end(void)
     return rect;
 }
 
-anim_t *create_first_anim(void)
+anim_t *create_anim_smoke(void)
 {
     anim_t *anim = anim_create();
 

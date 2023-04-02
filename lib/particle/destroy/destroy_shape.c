@@ -10,12 +10,10 @@
 void destroy_shape(shape_type_t shape_type, shape_t shape)
 {
     switch (shape_type) {
-    case RECT_OUTLINE:
-    case RECT:
+    case RECT_OUTLINE: case RECT: case MIRROR:
         sfRectangleShape_destroy(shape.rect);
         break;
-    case CIRCLE_OUTLINE:
-    case CIRCLE:
+    case CIRCLE_OUTLINE: case CIRCLE:
         sfCircleShape_destroy(shape.circle);
         break;
     case SPRITE:

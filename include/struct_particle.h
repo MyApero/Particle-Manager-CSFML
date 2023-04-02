@@ -19,7 +19,8 @@ typedef enum shape_type {
     RECT_OUTLINE,
     CIRCLE,
     CIRCLE_OUTLINE,
-    SPRITE
+    SPRITE,
+    MIRROR
 } shape_type_t;
 
 typedef union shape {
@@ -69,6 +70,7 @@ typedef struct anim {
     sfBool shape_end_default;
     shape_type_t shape_end_type;
     shape_t shape_end;
+    v2f mirror_offset;
     int speed;
     double spawn_delay_value;
     double spawn_delay;

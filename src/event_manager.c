@@ -7,17 +7,22 @@
 
 #include "../include/user.h"
 #include <SFML/System.h>
+#include <stdio.h>
 
 static void manage_keys(sfKeyCode key, anim_t **anims)
 {
     if (key == sfKeyA) {
-        anim_append(anims, create_first_anim());
+        anim_append(anims, create_anim_smoke());
     } if (key == sfKeyZ) {
-        anim_append(anims, create_second_anim());
+        anim_append(anims, create_anim_exp());
     } if (key == sfKeyE) {
-        anim_append(anims, create_third_anim());
+        anim_append(anims, create_anim_bubbles());
     } if (key == sfKeyR) {
         anim_append(anims, create_anim_capy());
+    } if (key == sfKeyT) {
+        anim_append(anims, create_anim_rain());
+    } if (key == sfKeyY) {
+        anim_append(anims, create_anim_charging());
     }
 }
 

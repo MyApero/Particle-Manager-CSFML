@@ -33,6 +33,7 @@ static void set_anim_shapes(anim_t *anim)
     anim->shape_end_type = RECT;
     anim->shape_end.rect = create_default_shape(anim->color_end,
         (v2f){SHAPE_SIZE}, (v2f){SHAPE_END});
+    anim->mirror_offset = (v2f){0, 0};
 }
 
 static void set_anim_properties(anim_t *anim)

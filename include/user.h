@@ -20,14 +20,18 @@ typedef enum anim_type {
     SMOKE,
     EXP,
     BUBBLES,
-    CAPY_ID
+    CAPY_ID,
+    RAIN,
+    CHARGING
 } anim_type_t;
 
 void initialize(void);
-anim_t *create_first_anim(void);
-anim_t *create_second_anim(void);
-anim_t *create_third_anim(void);
+anim_t *create_anim_smoke(void);
+anim_t *create_anim_exp(void);
+anim_t *create_anim_bubbles(void);
 anim_t *create_anim_capy(void);
+anim_t *create_anim_rain(void);
+anim_t *create_anim_charging(void);
 
 void free_anims(anim_t *anims);
 

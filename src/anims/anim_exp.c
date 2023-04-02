@@ -39,7 +39,7 @@ static sfCircleShape *create_shape_part(void)
     return circle;
 }
 
-anim_t *create_second_anim(void)
+anim_t *create_anim_exp(void)
 {
     anim_t *anim = anim_create();
 

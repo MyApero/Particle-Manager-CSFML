@@ -10,11 +10,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int get_particles_number(particles_t *particles)
+static int get_particles_number(anim_t *anims)
 {
     int i = 0;
-    for (; particles != NULL; particles = particles->next)
-        i++;
+    anim_t *anim = anims;
+    particles_t *particles;
+
+    if (anim == NULL)
+        return 0;
+    for (; anim != NULL; anim = anim->next) {
+        particles = anim->particles;
+        for (; particles != NULL; particles = particles->next)
+            i++;
+    }
     return i;
 }
 
@@ -29,6 +37,7 @@ anim_t **anims)
         event_manager(window, anims);
         update_manager(anims, dt);
         draw_manager(window, *anims);
+        printf("Number of Particles: %d\n", get_particles_number(*anims));
     }
 }
 
@@ -38,7 +47,7 @@ int main(void)
     sfRenderWindow *window = sfRenderWindow_create(video_mode, "SFML window",
     sfClose | sfResize, NULL);
     sfClock *game_clock = sfClock_create();
-    anim_t *anims = create_first_anim();
+    anim_t *anims = create_anim_rain();
 
     if (!window)
         return 84;
