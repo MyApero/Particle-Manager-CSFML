@@ -44,15 +44,15 @@ anim_t *create_second_anim(void)
     anim_t *anim = anim_create();
 
     anim_set_id(anim, EXP);
-    anim_set_frequency(anim, 1);
-    anim_set_batch_size(anim, 10);
-    anim_set_duration(anim, 0.2);
+    anim_set_frequency(anim, 9);
+    anim_set_batch_size(anim, 100);
+    anim_set_duration(anim, 3);
     anim_set_speed(anim, 250);
     anim_set_scale(anim, (v2f){1, 1});
     anim_set_color(anim, sfColor_fromRGBA(200, 230, 210, 200), sfColor_fromRGB(
         0, 0, 0));
     anim_set_shape_start(anim, RECT, create_shape_start());
-    anim_set_shape_end(anim, CIRCLE, create_shape_end());
+    anim_set_shape_end(anim, CIRCLE_OUTLINE, create_shape_end());
     anim_set_shape_part(anim, CIRCLE, create_shape_part());
     return anim;
 }

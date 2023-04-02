@@ -57,8 +57,9 @@ void set_shape_part(particles_t *part, anim_t *anim);
 int particles_move_or_ended(particles_t *part, double dt);
 int particle_update(particles_t *particle, double dt);
 v2f created_from_rect(sfFloatRect bounds);
-v2f created_from_circle(sfCircleShape *circle);
-v2f particle_place_created(shape_t shape, shape_type_t shape_type);
+v2f get_pos_from_circle(sfCircleShape *circle);
+v2f get_pos_from_circle_outline(sfCircleShape *circle);
+v2f get_particle_random_pos(shape_t shape, shape_type_t shape_type);
 void particle_destroy(particles_t *particle);
 
 double get_delta_time(sfClock *game_clock, double *prev_frame_time);

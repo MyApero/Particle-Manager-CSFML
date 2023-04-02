@@ -43,10 +43,10 @@ anim_t *create_anim_capy(void)
     anim_t *anim = anim_create();
 
     anim_set_id(anim, CAPY_ID);
-    anim_set_frequency(anim, 100);
-    anim_set_batch_size(anim, 5);
-    anim_set_duration(anim, 0.5);
-    anim_set_speed(anim, 200);
+    anim_set_frequency(anim, 200);
+    anim_set_batch_size(anim, 4);
+    anim_set_duration(anim, 0.1);
+    anim_set_speed(anim, 100);
     anim_set_shape_part(anim, SPRITE, create_capy_sprite(anim));
     anim_set_shape_start(anim, RECT, create_shape_start());
     anim_set_shape_end(anim, RECT, create_shape_end());

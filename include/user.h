@@ -19,7 +19,7 @@ typedef enum anim_type {
     DEFAULT,
     SMOKE,
     EXP,
-    BUG_CIRCLE,
+    BUBBLES,
     CAPY_ID
 } anim_type_t;
 

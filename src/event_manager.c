@@ -6,6 +6,7 @@
 */
 
 #include "../include/user.h"
+#include <SFML/System.h>
 
 static void manage_keys(sfKeyCode key, anim_t **anims)
 {
@@ -23,11 +24,17 @@ static void manage_keys(sfKeyCode key, anim_t **anims)
 void event_manager(sfRenderWindow *window, anim_t **anims)
 {
     sfEvent event;
+    sfVector2i mpos;
+
     while (sfRenderWindow_pollEvent(window, &event)) {
         if (event.type == sfEvtClosed || (event.type == sfEvtKeyPressed &&
         event.key.code == sfKeyEscape))
             sfRenderWindow_close(window);
         if (event.type == sfEvtKeyPressed)
             manage_keys(event.key.code, anims);
+        if (event.type == sfEvtMouseButtonPressed) {
+            mpos = sfMouse_getPositionRenderWindow(window);
+            printf("mouse down x%d y%d\n", mpos.x, mpos.y);
+        }
     }
 }

@@ -22,9 +22,9 @@ SRC	=	set/anim_set_id.c \
 		create/anim_create.c \
 		create/anim_append.c \
 		create/particle_create/particle_create.c \
-		create/particle_create/particle_place_created.c \
+		create/particle_create/get_pos_from_circle.c \
 		create/particle_create/create_from_rect.c \
-		create/particle_create/create_from_circle.c \
+		create/particle_create/get_particle_random_pos.c \
 		create/particle_create/set_particle_shape.c \
 		utils/v2f_operations.c \
 		utils/vector_norm.c \
