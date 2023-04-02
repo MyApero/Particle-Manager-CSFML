@@ -38,6 +38,8 @@ static void set_anim_shapes(anim_t *anim)
 anim_t *anim_create(void)
 {
     anim_t *anim = malloc(sizeof(anim_t));
+
+    anim->id = 0;
     anim->particles = NULL;
     anim->color_start = sfWhite;
     anim->color_end = sfWhite;

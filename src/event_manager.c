@@ -28,5 +28,4 @@ void event_manager(sfRenderWindow *window, anim_t **anims)
         if (event.type == sfEvtKeyPressed)
             manage_keys(event.key.code, anims);
     }
-
 }

@@ -17,8 +17,9 @@ void update_manager(anim_t **anims, double dt)
         return;
     for (; anim != NULL; anim = next_anim) {
         next_anim = anim->next;
-        // anim_set_color(anim, sfColor_fromRGBA(rand() % 255, 200,
-        //     100, 180), sfColor_fromRGB(0, 0, 0));
+        if (anim->id == EXP)
+            anim_set_color(anim, sfColor_fromRGBA(rand() % 255, 200,
+                100, 180), sfColor_fromRGB(0, 0, 0));
         anim_update(anim, dt);
         anim_destroy_secure(anims, anim);
     }

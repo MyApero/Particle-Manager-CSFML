@@ -33,6 +33,7 @@ anim_t *create_first_anim(void)
 {
     anim_t *anim = anim_create();
 
+    anim_set_id(anim, SMOKE);
     anim_set_frequency(anim, 50);
     anim_set_duration(anim, 1);
     anim_set_speed(anim, 100);

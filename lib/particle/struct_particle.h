@@ -55,6 +55,7 @@ typedef struct particles {
 // @param rotation 0
 // @param color {255, 0, 0, 150}
 typedef struct anim {
+    int id;
     particles_t *particles;
     sfBool particle_shape_default;
     shape_type_t particle_shape_type;

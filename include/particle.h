@@ -36,7 +36,9 @@ int is_anim_ended(anim_t *anim);
 void anim_destroy(anim_t *anim);
 void anim_destroy_secure(anim_t **anim_list, anim_t *anim);
 
-void anim_set_particle_shape(anim_t *anim, shape_type_t shape_type, void *shape);
+void anim_set_id(anim_t *anim, int id);
+void anim_set_particle_shape(anim_t *anim, shape_type_t shape_type,
+void *shape);
 void anim_set_shape_start(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_shape_end(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_speed(anim_t *anim, int speed);
@@ -53,6 +55,8 @@ void anim_set_rgb(anim_t *anim);
 particles_t *particle_create(anim_t *anim);
 int particles_move_or_ended(particles_t *part, double dt);
 int particle_update(particles_t *particle, double dt);
+v2f created_from_rect(sfRectangleShape *rect);
+v2f created_from_circle(sfCircleShape *circle);
 v2f particle_place_created(shape_t shape, shape_type_t shape_type);
 void particle_destroy(particles_t *particle);
 

@@ -21,7 +21,7 @@ static sfRectangleShape *create_shape_start(void)
 
 static sfCircleShape *create_shape_end(void)
 {
-    sfCircleShape *circle  = sfCircleShape_create();
+    sfCircleShape *circle = sfCircleShape_create();
 
     sfCircleShape_setPosition(circle, (v2f){150, 150});
     sfCircleShape_setRadius(circle, 50);
@@ -44,6 +44,7 @@ anim_t *create_second_anim(void)
 {
     anim_t *anim = anim_create();
 
+    anim_set_id(anim, EXP);
     anim_set_frequency(anim, 300);
     anim_set_duration(anim, 0.2);
     anim_set_speed(anim, 250);

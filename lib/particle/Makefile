@@ -5,7 +5,8 @@
 ## Compile my lib
 ##
 
-SRC	=	set/anim_set_color.c \
+SRC	=	set/anim_set_id.c \
+		set/anim_set_color.c \
 		set/anim_set_duration.c \
 		set/anim_set_frequency.c \
 		set/anim_set_rotation.c \
@@ -19,8 +20,10 @@ SRC	=	set/anim_set_color.c \
 		set/anim_set_is_generating.c \
 		create/anim_create.c \
 		create/anim_append.c \
-		create/particle_create.c \
-		create/create_particle_form.c \
+		create/particle_create/particle_create.c \
+		create/particle_create/particle_place_created.c \
+		create/particle_create/create_from_rect.c \
+		create/particle_create/create_from_circle.c \
 		utils/v2f_operations.c \
 		utils/vector_norm.c \
 		get_delta_time.c \
