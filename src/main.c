@@ -19,16 +19,16 @@ static int get_particles_number(particles_t *particles)
 }
 
 void execute(sfRenderWindow *window, sfClock *game_clock,
-anim_t *anims)
+anim_t **anims)
 {
     double prev_frame_time = sfClock_getElapsedTime(game_clock).microseconds;
     double dt;
 
     while (sfRenderWindow_isOpen(window)) {
         dt = get_delta_time(game_clock, &prev_frame_time);
-        event_manager(window);
+        event_manager(window, anims);
         update_manager(anims, dt);
-        draw_manager(window, anims);
+        draw_manager(window, *anims);
     }
 }
 
@@ -45,7 +45,7 @@ int main(void)
 
     sfRenderWindow_setFramerateLimit(window, 60);
 
-    execute(window, game_clock, anims);
+    execute(window, game_clock, &anims);
 
     sfRenderWindow_destroy(window);
     sfClock_destroy(game_clock);

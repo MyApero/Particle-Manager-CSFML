@@ -5,6 +5,8 @@
         "particle.h": "c",
         "user.h": "c",
         "struct_particle.h": "c",
-        "rectangleshape.h": "c"
+        "rectangleshape.h": "c",
+        "stdlib.h": "c",
+        "random": "c"
     }
 }

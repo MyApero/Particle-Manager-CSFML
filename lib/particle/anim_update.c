@@ -21,7 +21,18 @@ particles_t *new_particle)
     particle->next = new_particle;
 }
 
-// return -1 if anim is done and is free
+static void add_particles(anim_t *anim, double dt)
+{
+    anim->spawn_delay -= dt;
+    anim->time_elapsed += dt;
+    if (anim->time_elapsed < anim->duration) {
+        while (anim->spawn_delay < 0) {
+            append_particle(anim, &anim->particles, particle_create(anim));
+            anim->spawn_delay += anim->spawn_delay_value;
+        }
+    }
+}
+
 void anim_update(anim_t *anim, double dt)
 {
     particles_t *particle;
@@ -29,15 +40,7 @@ void anim_update(anim_t *anim, double dt)
 
     if (anim == NULL)
         return;
-    anim->spawn_delay -= dt;
-    anim->time_elapsed += dt;
-    if (anim->time_elapsed < anim->duration) {
-        while (anim->spawn_delay < 0) {
-            append_particle(anim, &anim->particles,
-            particle_create(anim));
-            anim->spawn_delay += anim->spawn_delay_value;
-        }
-    }
+    add_particles(anim, dt);
     while (particle_update(anim->particles, dt) == -1) {
         save_next = anim->particles->next;
         particle_destroy(anim->particles);

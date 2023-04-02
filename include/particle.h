@@ -9,10 +9,7 @@
 
 /*-------------------------------INCLUDE--------------------------------------*/
 
-#include <SFML/Audio.h>
 #include <SFML/Graphics.h>
-#include <stdlib.h>
-#include <math.h>
 
 #include "struct_particle.h"
 
@@ -32,13 +29,14 @@
 /*------------------------------PROGRAMME-------------------------------------*/
 
 anim_t *anim_create(void);
-particles_t *particle_create(anim_t *anim);
+void anim_append(anim_t **anim_list, anim_t *new_anim);
 void anim_update(anim_t *animation, double dt);
-void anim_display(sfRenderWindow *win, anim_t *animation);
+void anim_draw(sfRenderWindow *win, anim_t *animation);
 int is_anim_ended(anim_t *anim);
-void destroy_shape(shape_type_t shape_type, shape_t shape);
-void anim_destroy(anim_t *animation);
-void anim_set_shape(anim_t *anim, shape_type_t shape_type, void *shape);
+void anim_destroy(anim_t *anim);
+void anim_destroy_secure(anim_t **anim_list, anim_t *anim);
+
+void anim_set_particle_shape(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_shape_start(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_shape_end(anim_t *anim, shape_type_t shape_type, void *shape);
 void anim_set_speed(anim_t *anim, int speed);
@@ -51,11 +49,15 @@ void anim_set_is_generating(anim_t *anim, bool_t is_generating);
 void anim_set_rotation(anim_t *anim, float rotation);
 void anim_set_color(anim_t *anim, sfColor color, sfColor end_color);
 void anim_set_rgb(anim_t *anim);
+
+particles_t *particle_create(anim_t *anim);
+int particles_move_or_ended(particles_t *part, double dt);
 int particle_update(particles_t *particle, double dt);
-double get_delta_time(sfClock *game_clock, double *prev_frame_time);
 v2f particle_place_created(shape_t shape, shape_type_t shape_type);
-void destroy_shape(shape_type_t shape_type, shape_t shape);
 void particle_destroy(particles_t *particle);
+
+double get_delta_time(sfClock *game_clock, double *prev_frame_time);
+void destroy_shape(shape_type_t shape_type, shape_t shape);
 
 v2f float_multiply_v2f(v2f v, float x);
 v2f add_two_v2f(v2f v1, v2f v2);

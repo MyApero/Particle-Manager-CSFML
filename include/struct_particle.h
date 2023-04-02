@@ -39,6 +39,7 @@ typedef struct particles {
     sfColor color;
     sfColor color_modifier;
     double time_elapsed;
+    sfBool arrived;
     struct particles *next;
 } particles_t;
 
@@ -55,10 +56,13 @@ typedef struct particles {
 // @param color {255, 0, 0, 150}
 typedef struct anim {
     particles_t *particles;
+    sfBool particle_shape_default;
     shape_type_t particle_shape_type;
     shape_t particle_shape;
+    sfBool shape_start_default;
     shape_type_t shape_start_type;
     shape_t shape_start;
+    sfBool shape_end_default;
     shape_type_t shape_end_type;
     shape_t shape_end;
     int speed;

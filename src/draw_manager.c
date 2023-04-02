@@ -9,9 +9,11 @@
 
 void draw_manager(sfRenderWindow *window, anim_t *anims)
 {
+    anim_t *anim = anims;
+
     sfRenderWindow_clear(window, sfBlack);
-    for (anim_t *anim = anims; anim != NULL; anim = anim->next) {
-        anim_display(window, anim);
+    for (; anim != NULL; anim = anim->next) {
+        anim_draw(window, anim);
     }
     sfRenderWindow_display(window);
 }

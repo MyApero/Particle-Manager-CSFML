@@ -6,7 +6,7 @@
 */
 
 #include "particle.h"
-#include "struct_particle.h"
+#include <stdlib.h>
 
 void particle_destroy(particles_t *particle)
 {

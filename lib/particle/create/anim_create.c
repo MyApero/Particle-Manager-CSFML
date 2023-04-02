@@ -12,6 +12,7 @@
 static sfRectangleShape *create_default_shape(sfColor color, v2f size, v2f pos)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
+
     sfRectangleShape_setFillColor(rect, color);
     sfRectangleShape_setSize(rect, size);
     sfRectangleShape_setPosition(rect, pos);
@@ -20,12 +21,15 @@ static sfRectangleShape *create_default_shape(sfColor color, v2f size, v2f pos)
 
 static void set_anim_shapes(anim_t *anim)
 {
+    anim->particle_shape_default = sfTrue;
     anim->particle_shape_type = RECT;
     anim->particle_shape.rect = create_default_shape(anim->color_start,
-    (v2f) {PARTICLE_SIZE}, (v2f) {PARTICLE_POS});
+    (v2f) {10, 10}, (v2f) {0, 0});
+    anim->shape_start_default = sfTrue;
     anim->shape_start_type = RECT;
     anim->shape_start.rect = create_default_shape(anim->color_start,
     (v2f) {SHAPE_SIZE}, (v2f) {SHAPE_START});
+    anim->shape_end_default = sfTrue;
     anim->shape_end_type = RECT;
     anim->shape_end.rect = create_default_shape(anim->color_end,
     (v2f) {SHAPE_SIZE}, (v2f) {SHAPE_END});

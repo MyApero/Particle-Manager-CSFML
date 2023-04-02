@@ -9,6 +9,10 @@
 
 void anim_set_shape_end(anim_t *anim, shape_type_t shape_type, void *shape)
 {
+    if (anim->shape_end_default) {
+        destroy_shape(anim->shape_end_type, anim->shape_end);
+        anim->shape_end_default = sfFalse;
+    }
     anim->shape_end_type = shape_type;
     switch (shape_type) {
         case 0 ... 1: anim->shape_end.rect = shape; break;
