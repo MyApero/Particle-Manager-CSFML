@@ -9,6 +9,7 @@
         "stdlib.h": "c",
         "random": "c",
         "rect.h": "c",
-        "circleshape.h": "c"
+        "circleshape.h": "c",
+        "cmath": "c"
     }
 }

@@ -34,7 +34,7 @@ anim_t **anims)
 
 int main(void)
 {
-    sfVideoMode video_mode = { WIDTH, HEIGHT, 32 };
+    sfVideoMode video_mode = {WIDTH, HEIGHT, 32};
     sfRenderWindow *window = sfRenderWindow_create(video_mode, "SFML window",
     sfClose | sfResize, NULL);
     sfClock *game_clock = sfClock_create();

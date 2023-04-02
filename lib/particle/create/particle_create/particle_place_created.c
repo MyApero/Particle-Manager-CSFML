@@ -13,14 +13,16 @@ v2f particle_place_created(shape_t shape, shape_type_t shape_type)
     v2f vect;
 
     switch (shape_type) {
-        case 0: vect = created_from_rect(shape.rect); break;
-        case 1: vect = sfRectangleShape_getPoint(shape.rect, rand() %
-                (sfRectangleShape_getPointCount(shape.rect) - 1));
+        case RECT: vect = created_from_rect(shape.rect); break;
+        case RECT_OUTLINE: vect = sfRectangleShape_getPoint(shape.rect,
+            rand() % (sfRectangleShape_getPointCount(shape.rect) - 1));
                 break;
-        case 2: vect = created_from_circle(shape.circle); break;
-        case 3: vect = sfCircleShape_getPoint(shape.circle, rand() %
-                (sfCircleShape_getPointCount(shape.circle) - 1));
+        case CIRCLE: vect = created_from_circle(shape.circle); break;
+        case CIRCLE_OUTLINE: vect = sfCircleShape_getPoint(shape.circle,
+            rand() % (sfCircleShape_getPointCount(shape.circle) - 1));
                 break;
+        default:
+            break;
     };
     return vect;
 }

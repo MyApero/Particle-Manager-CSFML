@@ -25,11 +25,12 @@ static void add_particles(anim_t *anim, double dt)
 {
     anim->spawn_delay -= dt;
     anim->time_elapsed += dt;
-    if (anim->time_elapsed < anim->duration) {
-        while (anim->spawn_delay < 0) {
+    if (anim->time_elapsed >= anim->duration)
+        return;
+    while (anim->spawn_delay < 0) {
+        for (int i = 0; i < anim->batch_size; i++)
             append_particle(anim, &anim->particles, particle_create(anim));
-            anim->spawn_delay += anim->spawn_delay_value;
-        }
+        anim->spawn_delay += anim->spawn_delay_value;
     }
 }
 

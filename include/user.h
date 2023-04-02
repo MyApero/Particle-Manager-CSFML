@@ -7,11 +7,11 @@
 
 #pragma once
 
-#define WIDTH 1000
-#define HEIGHT 600
-#define FPS 60
+    #include "particle.h"
 
-#include "particle.h"
+    #define WIDTH 1000
+    #define HEIGHT 600
+    #define FPS 60
 
 typedef enum anim_type {
     DEFAULT,

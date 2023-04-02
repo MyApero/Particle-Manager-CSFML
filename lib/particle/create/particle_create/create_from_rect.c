@@ -14,12 +14,12 @@ v2f created_from_rect(sfRectangleShape *rect)
     sfFloatRect bounds = sfRectangleShape_getGlobalBounds(rect);
     v2f new_pos;
 
-    if (abs((int) bounds.width) > 1e-5)
-        new_pos.x = rand() % ((int) bounds.width) + bounds.left;
+    if (abs((int)bounds.width) > 1e-5)
+        new_pos.x = rand() % ((int)bounds.width) + bounds.left;
     else
         new_pos.x = bounds.left;
-    if (abs((int) bounds.height) > 1e-5)
-        new_pos.y = rand() % ((int) bounds.height) + bounds.top;
+    if (abs((int)bounds.height) > 1e-5)
+        new_pos.y = rand() % ((int)bounds.height) + bounds.top;
     else
         new_pos.y = bounds.top;
     return new_pos;

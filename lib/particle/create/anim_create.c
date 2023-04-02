@@ -21,18 +21,18 @@ static sfRectangleShape *create_default_shape(sfColor color, v2f size, v2f pos)
 
 static void set_anim_shapes(anim_t *anim)
 {
-    anim->particle_shape_default = sfTrue;
-    anim->particle_shape_type = RECT;
-    anim->particle_shape.rect = create_default_shape(anim->color_start,
-    (v2f) {10, 10}, (v2f) {0, 0});
+    anim->shape_part_default = sfTrue;
+    anim->shape_part_type = RECT;
+    anim->shape_part.rect = create_default_shape(anim->color_start,
+        (v2f){10, 10}, (v2f){0, 0});
     anim->shape_start_default = sfTrue;
     anim->shape_start_type = RECT;
     anim->shape_start.rect = create_default_shape(anim->color_start,
-    (v2f) {SHAPE_SIZE}, (v2f) {SHAPE_START});
+        (v2f){SHAPE_SIZE}, (v2f){SHAPE_START});
     anim->shape_end_default = sfTrue;
     anim->shape_end_type = RECT;
     anim->shape_end.rect = create_default_shape(anim->color_end,
-    (v2f) {SHAPE_SIZE}, (v2f) {SHAPE_END});
+        (v2f){SHAPE_SIZE}, (v2f){SHAPE_END});
 }
 
 anim_t *anim_create(void)
@@ -46,6 +46,7 @@ anim_t *anim_create(void)
     set_anim_shapes(anim);
     anim->speed = ANIM_SPEED;
     anim_set_frequency(anim, ANIM_FREQUENCY);
+    anim->batch_size = 1;
     anim->duration = ANIM_DURATION;
     anim->time_elapsed = 0;
     anim->scale = (v2f){ANIM_SCALE};

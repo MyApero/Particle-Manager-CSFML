@@ -18,12 +18,14 @@ typedef enum shape_type {
     RECT,
     RECT_OUTLINE,
     CIRCLE,
-    CIRCLE_OUTLINE
+    CIRCLE_OUTLINE,
+    SPRITE
 } shape_type_t;
 
 typedef union shape {
     sfRectangleShape *rect;
     sfCircleShape *circle;
+    sfSprite *sprite;
 } shape_t;
 
 typedef struct particles {
@@ -44,7 +46,7 @@ typedef struct particles {
 } particles_t;
 
 // @brief Here's all of the default values for this struct :
-// @param particle_shape Rectangle 1:1:1:1
+// @param shape_part Rectangle 1:1:1:1
 // @param shape_start Rectangle_outline 100:100:100:100
 // @param shape_end Rectangle 145:145:10:10
 // @param speed 1 (pixels/seconds)
@@ -57,9 +59,9 @@ typedef struct particles {
 typedef struct anim {
     int id;
     particles_t *particles;
-    sfBool particle_shape_default;
-    shape_type_t particle_shape_type;
-    shape_t particle_shape;
+    sfBool shape_part_default;
+    shape_type_t shape_part_type;
+    shape_t shape_part;
     sfBool shape_start_default;
     shape_type_t shape_start_type;
     shape_t shape_start;
@@ -69,6 +71,7 @@ typedef struct anim {
     int speed;
     double spawn_delay_value;
     double spawn_delay;
+    unsigned int batch_size;
     float duration;
     double time_elapsed;
     v2f scale;

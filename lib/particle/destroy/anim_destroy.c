@@ -26,7 +26,7 @@ void anim_destroy(anim_t *anim)
     if (anim->next != NULL)
         anim->next->previous = anim->previous;
     destroy_particles(anim->particles);
-    destroy_shape(anim->particle_shape_type, anim->particle_shape);
+    destroy_shape(anim->shape_part_type, anim->shape_part);
     destroy_shape(anim->shape_end_type, anim->shape_end);
     destroy_shape(anim->shape_start_type, anim->shape_start);
     free(anim);

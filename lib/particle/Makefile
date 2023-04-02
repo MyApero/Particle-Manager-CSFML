@@ -9,12 +9,13 @@ SRC	=	set/anim_set_id.c \
 		set/anim_set_color.c \
 		set/anim_set_duration.c \
 		set/anim_set_frequency.c \
+		set/anim_set_batch_size.c \
 		set/anim_set_rotation.c \
 		set/anim_set_scale_limit.c \
 		set/anim_set_scale_modifier.c \
 		set/anim_set_scale.c \
+		set/anim_set_shape_part.c \
 		set/anim_set_shape_start.c \
-		set/anim_set_particle_shape.c \
 		set/anim_set_shape_end.c \
 		set/anim_set_speed.c \
 		set/anim_set_is_generating.c \
@@ -24,12 +25,13 @@ SRC	=	set/anim_set_id.c \
 		create/particle_create/particle_place_created.c \
 		create/particle_create/create_from_rect.c \
 		create/particle_create/create_from_circle.c \
+		create/particle_create/set_particle_shape.c \
 		utils/v2f_operations.c \
 		utils/vector_norm.c \
 		get_delta_time.c \
-		particle_update/particle_update.c \
-		particle_update/particle_move_or_ended.c \
-		anim_update.c \
+		update/anim_update.c \
+		update/particle_update/particle_update.c \
+		update/particle_update/particle_move_or_ended.c \
 		anim_draw.c \
 		destroy/destroy_shape.c \
 		destroy/anim_destroy.c \

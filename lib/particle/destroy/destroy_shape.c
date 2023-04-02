@@ -9,9 +9,19 @@
 
 void destroy_shape(shape_type_t shape_type, shape_t shape)
 {
-
-    if (shape_type == RECT || shape_type == RECT_OUTLINE)
+    switch (shape_type) {
+    case RECT_OUTLINE:
+    case RECT:
         sfRectangleShape_destroy(shape.rect);
-    else if (shape_type == CIRCLE || shape_type == CIRCLE_OUTLINE)
+        break;
+    case CIRCLE_OUTLINE:
+    case CIRCLE:
         sfCircleShape_destroy(shape.circle);
+        break;
+    case SPRITE:
+        sfSprite_destroy(shape.sprite);
+        break;
+    default:
+        break;
+    }
 }
