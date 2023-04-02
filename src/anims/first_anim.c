@@ -34,10 +34,10 @@ anim_t *create_first_anim(void)
     anim_t *anim = anim_create();
 
     anim_set_id(anim, SMOKE);
-    anim_set_frequency(anim, 50);
+    anim_set_frequency(anim, 200);
     anim_set_duration(anim, 1);
     anim_set_speed(anim, 100);
-    anim_set_scale(anim, (v2f){1, 1});
+    anim_set_scale(anim, (v2f){0.2, 0.2});
     anim_set_color(anim, sfColor_fromRGBA(60, 70, 80, 160), sfColor_fromRGB(
         0, 0, 0));
     anim_set_shape_start(anim, RECT, create_shape_start());
