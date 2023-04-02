@@ -35,25 +35,36 @@ static void set_anim_shapes(anim_t *anim)
         (v2f){SHAPE_SIZE}, (v2f){SHAPE_END});
 }
 
+static void set_anim_properties(anim_t *anim)
+{
+    anim->speed = ANIM_SPEED;
+    anim_set_frequency(anim, ANIM_FREQUENCY);
+    anim->batch_size = ANIM_BATCH_SIZE;
+    anim->duration = ANIM_DURATION;
+    anim->time_elapsed = 0;
+    anim->is_generating = TRUE;
+}
+
+static void set_anim_particles(anim_t *anim)
+{
+    anim->particles = NULL;
+    anim->particle_texture = NULL;
+    anim->color_start = sfWhite;
+    anim->color_end = sfWhite;
+    anim->scale = (v2f){ANIM_SCALE};
+    anim->scale_modifier = (v2f){ANIM_SCALE};
+    anim->scale_limit = (v2f){ANIM_SCALE};
+    anim->rotation = 0;
+}
+
 anim_t *anim_create(void)
 {
     anim_t *anim = malloc(sizeof(anim_t));
 
     anim->id = 0;
-    anim->particles = NULL;
-    anim->color_start = sfWhite;
-    anim->color_end = sfWhite;
+    set_anim_particles(anim);
     set_anim_shapes(anim);
-    anim->speed = ANIM_SPEED;
-    anim_set_frequency(anim, ANIM_FREQUENCY);
-    anim->batch_size = 1;
-    anim->duration = ANIM_DURATION;
-    anim->time_elapsed = 0;
-    anim->scale = (v2f){ANIM_SCALE};
-    anim->scale_modifier = (v2f){ANIM_SCALE};
-    anim->scale_limit = (v2f){ANIM_SCALE};
-    anim->rotation = 0;
-    anim->is_generating = TRUE;
+    set_anim_properties(anim);
     anim->next = NULL;
     anim->previous = NULL;
     return anim;

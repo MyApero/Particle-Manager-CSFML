@@ -13,7 +13,9 @@ v2f particle_place_created(shape_t shape, shape_type_t shape_type)
     v2f vect;
 
     switch (shape_type) {
-        case RECT: vect = created_from_rect(shape.rect); break;
+        case RECT:
+            vect = created_from_rect(
+                sfRectangleShape_getGlobalBounds(shape.rect)); break;
         case RECT_OUTLINE: vect = sfRectangleShape_getPoint(shape.rect,
             rand() % (sfRectangleShape_getPointCount(shape.rect) - 1));
                 break;
@@ -21,6 +23,9 @@ v2f particle_place_created(shape_t shape, shape_type_t shape_type)
         case CIRCLE_OUTLINE: vect = sfCircleShape_getPoint(shape.circle,
             rand() % (sfCircleShape_getPointCount(shape.circle) - 1));
                 break;
+        case SPRITE:
+            vect = created_from_rect(sfSprite_getGlobalBounds(shape.sprite));
+            break;
         default:
             break;
     };

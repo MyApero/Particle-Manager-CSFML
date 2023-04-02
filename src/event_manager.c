@@ -15,6 +15,8 @@ static void manage_keys(sfKeyCode key, anim_t **anims)
         anim_append(anims, create_second_anim());
     } if (key == sfKeyE) {
         anim_append(anims, create_third_anim());
+    } if (key == sfKeyR) {
+        anim_append(anims, create_anim_capy());
     }
 }
 

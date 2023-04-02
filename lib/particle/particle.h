@@ -18,6 +18,7 @@
     #define ANIM_DURATION 5
     #define ANIM_COLOR 255, 0, 0, 150
     #define ANIM_SCALE 1, 1
+    #define ANIM_BATCH_SIZE 1
     #define PARTICLE_POS 0, 0
     #define PARTICLE_SIZE 25, 25
     #define SHAPE_START 0, 0
@@ -55,7 +56,7 @@ particles_t *particle_create(anim_t *anim);
 void set_shape_part(particles_t *part, anim_t *anim);
 int particles_move_or_ended(particles_t *part, double dt);
 int particle_update(particles_t *particle, double dt);
-v2f created_from_rect(sfRectangleShape *rect);
+v2f created_from_rect(sfFloatRect bounds);
 v2f created_from_circle(sfCircleShape *circle);
 v2f particle_place_created(shape_t shape, shape_type_t shape_type);
 void particle_destroy(particles_t *particle);

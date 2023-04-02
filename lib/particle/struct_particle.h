@@ -59,6 +59,7 @@ typedef struct particles {
 typedef struct anim {
     int id;
     particles_t *particles;
+    sfTexture *particle_texture;
     sfBool shape_part_default;
     shape_type_t shape_part_type;
     shape_t shape_part;

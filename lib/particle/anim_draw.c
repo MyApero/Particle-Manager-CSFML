@@ -8,6 +8,25 @@
 #include "particle.h"
 #include <SFML/Graphics/RenderWindow.h>
 
+static void draw_shape(sfRenderWindow *win, shape_type_t shape_type,
+shape_t shape)
+{
+    switch (shape_type) {
+    case RECT_OUTLINE: case RECT:
+        sfRenderWindow_drawRectangleShape(win, shape.rect, NULL);
+        break;
+    case CIRCLE_OUTLINE: case CIRCLE:
+        sfRenderWindow_drawCircleShape(win, shape.circle, NULL);
+        break;
+    case SPRITE:
+        sfRenderWindow_drawSprite(win, shape.sprite, NULL);
+        break;
+    default:
+        break;
+    }
+
+}
+
 void anim_draw(sfRenderWindow *win, anim_t *animation)
 {
     particles_t *particle;
@@ -20,9 +39,6 @@ void anim_draw(sfRenderWindow *win, anim_t *animation)
     for (; particle != NULL; particle = particle->next) {
         if (particle->arrived)
             continue;
-        if (particle->shape_type == RECT)
-            sfRenderWindow_drawRectangleShape(win, particle->shape.rect, NULL);
-        if (particle->shape_type == CIRCLE)
-            sfRenderWindow_drawCircleShape(win, particle->shape.circle, NULL);
+        draw_shape(win, particle->shape_type, particle->shape);
     }
 }

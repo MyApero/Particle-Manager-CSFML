@@ -12,6 +12,7 @@ SRC	=	src/main.c \
 		src/anims/first_anim.c \
 		src/anims/second_anim.c \
 		src/anims/third_anim.c \
+		src/anims/anim_capy.c \
 		src/event_manager.c \
 		src/update_manager.c \
 		src/draw_manager.c

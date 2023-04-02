@@ -9,9 +9,8 @@
 #include <SFML/Graphics/Rect.h>
 #include <stdlib.h>
 
-v2f created_from_rect(sfRectangleShape *rect)
+v2f created_from_rect(sfFloatRect bounds)
 {
-    sfFloatRect bounds = sfRectangleShape_getGlobalBounds(rect);
     v2f new_pos;
 
     if (abs((int)bounds.width) > 1e-5)

@@ -29,6 +29,7 @@ void anim_destroy(anim_t *anim)
     destroy_shape(anim->shape_part_type, anim->shape_part);
     destroy_shape(anim->shape_end_type, anim->shape_end);
     destroy_shape(anim->shape_start_type, anim->shape_start);
+    sfTexture_destroy(anim->particle_texture);
     free(anim);
 }
 
