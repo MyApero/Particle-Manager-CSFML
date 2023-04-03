@@ -21,7 +21,7 @@ SRC	=	src/main.c \
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	=	-I./include -Wall -Wextra -g3 # -fsanitize=address
+CFLAGS	=	-I./include -Wall -Wextra -g3  -fsanitize=address
 
 LIB		=	-L./lib/ -lparticle
 

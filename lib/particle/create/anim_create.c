@@ -53,8 +53,7 @@ static void set_anim_particles(anim_t *anim)
     anim->color_start = sfWhite;
     anim->color_end = sfWhite;
     anim->scale = (v2f){ANIM_SCALE};
-    anim->scale_modifier = (v2f){ANIM_SCALE};
-    anim->scale_limit = (v2f){ANIM_SCALE};
+    anim->scale_props = NULL;
     anim->rotation = 0;
 }
 

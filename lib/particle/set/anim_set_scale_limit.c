@@ -7,7 +7,6 @@
 
 #include "particle.h"
 
-void anim_set_scale_limit(anim_t *anim, sfVector2f scale_limit)
+void anim_set_scale_limit(anim_t *anim,)
 {
-    anim->scale_limit = scale_limit;
 }

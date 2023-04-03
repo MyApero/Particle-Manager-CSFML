@@ -32,11 +32,11 @@ particles_t *particle_create(anim_t *anim)
     particles_t *particle = malloc(sizeof(particles_t));
 
     particle->color = anim->color_start;
-    particle->scale = anim->scale;
     particle->position = get_random_pos(anim->shape_start,
         anim->shape_start_type);
     set_shape_part(particle, anim);
     set_destination(particle, anim);
+    particle->scale_props = anim->scale_props;
     particle->move = set_movement(particle->position, particle->destination);
     particle->speed = anim->speed;
     particle->time_elapsed = 0;

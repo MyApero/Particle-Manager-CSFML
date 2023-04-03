@@ -47,8 +47,8 @@ void anim_set_frequency(anim_t *anim, float frequency);
 void anim_set_batch_size(anim_t *anim, unsigned int batch_size);
 void anim_set_duration(anim_t *anim, float duration);
 void anim_set_scale(anim_t *anim, sfVector2f scale);
-void anim_set_scale_modifier(anim_t *anim, v2f scale_modifier);
-void anim_set_scale_limit(anim_t *anim, sfVector2f scale_limit);
+void anim_set_scale_modifier(anim_t *anim, v2f scale_modifier,
+sfVector2f scale_min, sfVector2f scale_max);
 void anim_set_is_generating(anim_t *anim, bool_t is_generating);
 void anim_set_rotation(anim_t *anim, float rotation);
 void anim_set_color(anim_t *anim, sfColor color, sfColor end_color);
@@ -71,3 +71,5 @@ v2f add_two_v2f(v2f v1, v2f v2);
 float vector_norm(v2f vector);
 double get_delta_time(sfClock *game_clock, double *prev_frame_time);
 int get_random_nb_between(int from, int min, int max, int epsilon);
+int contain_v2f(v2f min, v2f max, v2f ele);
+void destroy_scale(scale_t *scale);

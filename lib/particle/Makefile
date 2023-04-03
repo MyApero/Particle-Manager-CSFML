@@ -11,7 +11,6 @@ SRC	=	set/anim_set_id.c \
 		set/anim_set_frequency.c \
 		set/anim_set_batch_size.c \
 		set/anim_set_rotation.c \
-		set/anim_set_scale_limit.c \
 		set/anim_set_scale_modifier.c \
 		set/anim_set_scale.c \
 		set/anim_set_shape_part.c \

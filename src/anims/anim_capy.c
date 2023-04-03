@@ -46,6 +46,8 @@ anim_t *create_anim_capy(void)
     anim_set_frequency(anim, 200);
     anim_set_batch_size(anim, 4);
     anim_set_duration(anim, 0.1);
+    anim_set_scale_modifier(anim, (v2f){1.01, 1.01} ,(v2f){0.0, 0.0},
+        (v2f){2.0, 2.0});
     anim_set_speed(anim, 100);
     anim_set_shape_part(anim, SPRITE, create_capy_sprite(anim));
     anim_set_shape_start(anim, RECT, create_shape_start());

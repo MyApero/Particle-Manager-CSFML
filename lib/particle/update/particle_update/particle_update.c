@@ -7,18 +7,27 @@
 
 #include "particle.h"
 
-static void set_scale(shape_type_t shape_type, shape_t shape, v2f scale)
+static void set_scale(shape_type_t shape_type, shape_t shape, scale_t *scale)
 {
+    v2f n_scale;
+
+    if (scale == NULL)
+        return;
     switch (shape_type) {
-    case RECT_OUTLINE: case RECT:
-        sfRectangleShape_setScale(shape.rect, scale); break;
-    case CIRCLE_OUTLINE: case CIRCLE:
-        sfCircleShape_setScale(shape.circle, scale); break;
-    case SPRITE:
-        sfSprite_setScale(shape.sprite, scale); break;
-    default:
-        break;
+        case RECT_OUTLINE: case RECT:
+            sfRectangleShape_scale(shape.rect, scale->scale_modifier);
+            n_scale = sfRectangleShape_getScale(shape.rect); break;
+        case CIRCLE_OUTLINE: case CIRCLE:
+            sfCircleShape_scale(shape.circle, scale->scale_modifier);
+            n_scale = sfCircleShape_getScale(shape.circle); break;
+        case SPRITE:
+            sfSprite_scale(shape.sprite, scale->scale_modifier);
+            n_scale = sfSprite_getScale(shape.sprite); break;
+        default: return;
     }
+    printf("%f, %f\n", n_scale.x, scale->scale_modifier.x);
+    if (!contain_v2f(scale->scale_min, scale->scale_max, n_scale))
+        destroy_scale(scale);
 }
 
 static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
@@ -38,7 +47,7 @@ static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
 static void apply_changes(particles_t *particle)
 {
     set_position(particle->shape_type, particle->shape, particle->position);
-    set_scale(particle->shape_type, particle->shape, particle->scale);
+    set_scale(particle->shape_type, particle->shape, particle->scale_props);
 }
 
 int particle_update(particles_t *particle, double dt)

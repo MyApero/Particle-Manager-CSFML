@@ -8,12 +8,24 @@
 #include "particle.h"
 #include <stdlib.h>
 
+void destroy_scale(scale_t *scale)
+{
+    void *temp = scale;
+
+    /*if (scale) {*/
+        /*scale = NULL;*/
+       /*// free(temp);*/
+    /*}*/
+}
+
 static void destroy_particles(particles_t *particle)
 {
     if (particle == NULL)
         return;
     destroy_particles(particle->next);
     destroy_shape(particle->shape_type, particle->shape);
+    if (particle->scale_props)
+        destroy_scale(particle->scale_props);
     free(particle);
 }
 

@@ -29,6 +29,12 @@ typedef union shape {
     sfSprite *sprite;
 } shape_t;
 
+typedef struct scale {
+    v2f scale_modifier;
+    v2f scale_min;
+    v2f scale_max;
+} scale_t;
+
 typedef struct particles {
     shape_type_t shape_type;
     shape_t shape;
@@ -36,8 +42,7 @@ typedef struct particles {
     v2f destination;
     v2f move;
     int speed;
-    v2f scale;
-    v2f scale_modifier;
+    scale_t *scale_props;
     float rotation_modifier;
     sfColor color;
     sfColor color_modifier;
@@ -78,8 +83,7 @@ typedef struct anim {
     float duration;
     double time_elapsed;
     v2f scale;
-    v2f scale_modifier;
-    v2f scale_limit;
+    scale_t *scale_props;
     float rotation;
     sfColor color_start;
     sfColor color_end;
