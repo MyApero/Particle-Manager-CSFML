@@ -7,11 +7,12 @@
 
 #include "particle.h"
 
-static void set_scale(shape_type_t shape_type, shape_t shape, scale_t *scale)
+static void set_scale(shape_type_t shape_type, shape_t shape, scale_t **sca)
 {
     v2f n_scale;
+    scale_t *scale = *sca;
 
-    if (scale == NULL)
+    if (*sca == NULL)
         return;
     switch (shape_type) {
         case RECT_OUTLINE: case RECT:
@@ -25,9 +26,10 @@ static void set_scale(shape_type_t shape_type, shape_t shape, scale_t *scale)
             n_scale = sfSprite_getScale(shape.sprite); break;
         default: return;
     }
-    printf("%f, %f\n", n_scale.x, scale->scale_modifier.x);
-    if (!contain_v2f(scale->scale_min, scale->scale_max, n_scale))
-        destroy_scale(scale);
+    if (!contain_v2f(scale->scale_min, scale->scale_max, n_scale)) {
+        scale->scale_modifier.x = 1.0;
+        scale->scale_modifier.y = 1.0;
+    }
 }
 
 static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
@@ -47,7 +49,7 @@ static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
 static void apply_changes(particles_t *particle)
 {
     set_position(particle->shape_type, particle->shape, particle->position);
-    set_scale(particle->shape_type, particle->shape, particle->scale_props);
+    set_scale(particle->shape_type, particle->shape, &particle->scale_props);
 }
 
 int particle_update(particles_t *particle, double dt)

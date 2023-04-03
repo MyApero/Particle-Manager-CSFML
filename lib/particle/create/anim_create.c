@@ -34,6 +34,7 @@ static void set_anim_shapes(anim_t *anim)
     anim->shape_end.rect = create_default_shape(anim->color_end,
         (v2f){SHAPE_SIZE}, (v2f){SHAPE_END});
     anim->mirror_offset = (v2f){0, 0};
+    anim->scale_props = NULL;
 }
 
 static void set_anim_properties(anim_t *anim)
@@ -53,7 +54,6 @@ static void set_anim_particles(anim_t *anim)
     anim->color_start = sfWhite;
     anim->color_end = sfWhite;
     anim->scale = (v2f){ANIM_SCALE};
-    anim->scale_props = NULL;
     anim->rotation = 0;
 }
 
