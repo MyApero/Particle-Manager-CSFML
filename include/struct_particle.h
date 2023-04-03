@@ -44,7 +44,6 @@ typedef struct particles {
     int speed;
     scale_t *scale_props;
     float rotation_modifier;
-    float rota_no_change;
     sfColor color;
     double time_elapsed;
     sfBool arrived;

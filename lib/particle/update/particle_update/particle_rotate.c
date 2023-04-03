@@ -11,11 +11,11 @@ void set_rotation(shape_type_t shape_type, shape_t shape, float rotation)
 {
     switch (shape_type) {
         case RECT_OUTLINE: case RECT:
-            sfRectangleShape_setRotation(shape.rect, rotation);
+            sfRectangleShape_rotate(shape.rect, rotation);
         case CIRCLE_OUTLINE: case CIRCLE:
-            sfCircleShape_setRotation(shape.circle, rotation);
+            sfCircleShape_rotate(shape.circle, rotation);
         case SPRITE:
-            sfSprite_setRotation(shape.sprite, rotation);
+            sfSprite_rotate(shape.sprite, rotation);
         default : break;
     }
 }

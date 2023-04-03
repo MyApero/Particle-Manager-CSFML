@@ -26,10 +26,8 @@ static void set_scale(shape_type_t shape_type, shape_t shape, scale_t **sca)
             n_scale = sfSprite_getScale(shape.sprite); break;
         default: return;
     }
-    if (!contain_v2f(scale->scale_min, scale->scale_max, n_scale)) {
-        scale->scale_modifier.x = 1.0;
-        scale->scale_modifier.y = 1.0;
-    }
+    if (!contain_v2f(scale->scale_min, scale->scale_max, n_scale))
+        scale->scale_modifier = (v2f){1.0, 1.0};
 }
 
 static void set_position(shape_type_t shape_type, shape_t shape, v2f pos)
@@ -65,8 +63,6 @@ static void apply_changes(particles_t *particle)
     set_color(particle->shape_type, particle->shape, particle);
     set_rotation(particle->shape_type, particle->shape,
         particle->rotation_modifier);
-    particle->rotation_modifier =
-        particle->time_elapsed * particle->rota_no_change;
 }
 
 int particle_update(particles_t *particle, double dt)
