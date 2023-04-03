@@ -45,7 +45,6 @@ typedef struct particles {
     scale_t *scale_props;
     float rotation_modifier;
     sfColor color;
-    sfColor color_modifier;
     double time_elapsed;
     sfBool arrived;
     struct particles *next;
@@ -85,8 +84,7 @@ typedef struct anim {
     v2f scale;
     scale_t *scale_props;
     float rotation;
-    sfColor color_start;
-    sfColor color_end;
+    sfColor color;
     bool_t is_generating;
     struct anim *next;
     struct anim *previous;

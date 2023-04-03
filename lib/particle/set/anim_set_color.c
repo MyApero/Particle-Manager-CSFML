@@ -7,8 +7,7 @@
 
 #include "particle.h"
 
-void anim_set_color(anim_t *anim, sfColor color_start, sfColor color_end)
+void anim_set_color(anim_t *anim, sfColor color)
 {
-    anim->color_start = color_start;
-    anim->color_end = color_end;
+    anim->color = color;
 }

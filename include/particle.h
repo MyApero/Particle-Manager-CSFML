@@ -51,7 +51,7 @@ void anim_set_scale_modifier(anim_t *anim, v2f scale_modifier,
 sfVector2f scale_min, sfVector2f scale_max);
 void anim_set_is_generating(anim_t *anim, bool_t is_generating);
 void anim_set_rotation(anim_t *anim, float rotation);
-void anim_set_color(anim_t *anim, sfColor color, sfColor end_color);
+void anim_set_color(anim_t *anim, sfColor color);
 void anim_set_rgb(anim_t *anim);
 
 particles_t *particle_create(anim_t *anim);

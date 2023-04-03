@@ -59,10 +59,9 @@ anim_t *create_anim_charging(void)
     anim_set_duration(anim, 5);
     anim_set_speed(anim, 250);
     anim_set_scale(anim, (v2f){1, 2});
-    anim_set_color(anim, sfColor_fromRGBA(230, 100, 100, 10), sfColor_fromRGB(
-        0, 0, 0));
+    anim_set_color(anim, sfColor_fromRGBA(230, 100, 100, 10));
     anim_set_shape_start(anim, CIRCLE_OUTLINE, create_shape_start());
-    anim_set_shape_end(anim, CIRCLE, create_shape_end2());
+    anim_set_shape_end(anim, CIRCLE, create_shape_end1());
     anim_set_shape_part(anim, CIRCLE, create_shape_part());
     return anim;
 }
