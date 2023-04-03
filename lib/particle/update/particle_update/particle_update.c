@@ -63,6 +63,10 @@ static void apply_changes(particles_t *particle)
     set_position(particle->shape_type, particle->shape, particle->position);
     set_scale(particle->shape_type, particle->shape, &particle->scale_props);
     set_color(particle->shape_type, particle->shape, particle);
+    set_rotation(particle->shape_type, particle->shape,
+        particle->rotation_modifier);
+    particle->rotation_modifier =
+        particle->time_elapsed * particle->rota_no_change;
 }
 
 int particle_update(particles_t *particle, double dt)

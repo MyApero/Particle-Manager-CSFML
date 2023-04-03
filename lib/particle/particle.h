@@ -73,3 +73,4 @@ double get_delta_time(sfClock *game_clock, double *prev_frame_time);
 int get_random_nb_between(int from, int min, int max, int epsilon);
 int contain_v2f(v2f min, v2f max, v2f ele);
 void destroy_scale(scale_t *scale);
+void set_rotation(shape_type_t shape_type, shape_t shape, float rotation);

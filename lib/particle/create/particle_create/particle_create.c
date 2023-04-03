@@ -36,6 +36,8 @@ particles_t *particle_create(anim_t *anim)
         anim->shape_start_type);
     set_shape_part(particle, anim);
     set_destination(particle, anim);
+    particle->rotation_modifier = anim->rotation;
+    particle->rota_no_change = anim->rotation;
     particle->color = anim->color;
     particle->scale_props = anim->scale_props;
     particle->move = set_movement(particle->position, particle->destination);

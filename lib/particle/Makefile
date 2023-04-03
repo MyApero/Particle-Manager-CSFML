@@ -32,6 +32,7 @@ SRC	=	set/anim_set_id.c \
 		update/anim_update.c \
 		update/particle_update/particle_update.c \
 		update/particle_update/particle_move_or_ended.c \
+		update/particle_update/particle_rotate.c \
 		anim_draw.c \
 		destroy/destroy_shape.c \
 		destroy/anim_destroy.c \
