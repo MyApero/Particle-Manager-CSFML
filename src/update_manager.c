@@ -16,6 +16,7 @@ static void enhance_anim(anim_t *anim)
     case EXP:
         anim_set_color(anim, sfColor_fromRGBA(rand() % 255, 200,
             100, 180), sfColor_fromRGB(0, 0, 0));
+        sfRectangleShape_move(anim->shape_start.rect, (v2f){1, 1});
         break;
     case RAIN:
         anim_set_speed(anim, get_random_nb_between(anim->speed, 500, 999, 50));
