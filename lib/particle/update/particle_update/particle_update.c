@@ -52,7 +52,7 @@ particles_t *particle)
             sfRectangleShape_setFillColor(shape.rect, particle->color);
         case CIRCLE_OUTLINE: case CIRCLE:
             sfCircleShape_setFillColor(shape.circle, particle->color);
-        default :break;
+        default: break;
     }
 }
 

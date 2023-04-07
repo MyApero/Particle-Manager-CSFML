@@ -42,7 +42,6 @@ void anim_destroy(anim_t *anim)
     free(anim);
 }
 
-// Remove ended anims from the anim list, changing next and previous
 void anim_destroy_secure(anim_t **anim_list, anim_t *anim)
 {
     anim_t *next_anim = NULL;

@@ -16,6 +16,6 @@ void set_rotation(shape_type_t shape_type, shape_t shape, float rotation)
             sfCircleShape_rotate(shape.circle, rotation);
         case SPRITE:
             sfSprite_rotate(shape.sprite, rotation);
-        default : break;
+        default: break;
     }
 }
