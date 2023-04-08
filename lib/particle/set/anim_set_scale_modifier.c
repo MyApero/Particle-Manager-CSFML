@@ -8,7 +8,7 @@
 #include "particle.h"
 #include <stdlib.h>
 
-void anim_set_scale_modifier(anim_t *anim, v2f scale_modifier,
+void anim_set_scale_modifier(anim_t *anim, v2f_t scale_modifier,
 sfVector2f scale_min, sfVector2f scale_max)
 {
     if (!anim->scale_props)

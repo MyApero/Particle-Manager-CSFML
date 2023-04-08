@@ -45,13 +45,13 @@ void anim_destroy(anim_t *anim)
 void anim_destroy_secure(anim_t **anim_list, anim_t *anim)
 {
     anim_t *next_anim = NULL;
-    bool_t first_anim = FALSE;
+    bool first_anim = false;
 
     if (anim == NULL || !is_anim_ended(anim))
         return;
     if (anim->previous == NULL) {
         next_anim = anim->next;
-        first_anim = TRUE;
+        first_anim = true;
     }
     anim_destroy(anim);
     if (first_anim) {

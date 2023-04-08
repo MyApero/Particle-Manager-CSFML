@@ -47,9 +47,9 @@ void anim_set_frequency(anim_t *anim, float frequency);
 void anim_set_batch_size(anim_t *anim, unsigned int batch_size);
 void anim_set_duration(anim_t *anim, float duration);
 void anim_set_scale(anim_t *anim, sfVector2f scale);
-void anim_set_scale_modifier(anim_t *anim, v2f scale_modifier,
+void anim_set_scale_modifier(anim_t *anim, v2f_t scale_modifier,
 sfVector2f scale_min, sfVector2f scale_max);
-void anim_set_is_generating(anim_t *anim, bool_t is_generating);
+void anim_set_is_generating(anim_t *anim, bool is_generating);
 void anim_set_rotation(anim_t *anim, float rotation);
 void anim_set_color(anim_t *anim, sfColor color);
 void anim_set_rgb(anim_t *anim);
@@ -58,19 +58,19 @@ particles_t *particle_create(anim_t *anim);
 void set_shape_part(particles_t *part, anim_t *anim);
 int particles_move_or_ended(particles_t *part, double dt);
 int particle_update(particles_t *particle, double dt);
-v2f get_from_rect(sfFloatRect bounds);
-v2f get_from_circle(sfCircleShape *circle);
-v2f get_pos_from_circle_outline(sfCircleShape *circle);
-v2f get_random_pos(shape_t shape, shape_type_t shape_type);
+v2f_t get_from_rect(sfFloatRect bounds);
+v2f_t get_from_circle(sfCircleShape *circle);
+v2f_t get_pos_from_circle_outline(sfCircleShape *circle);
+v2f_t get_random_pos(shape_t shape, shape_type_t shape_type);
 void particle_destroy(particles_t *particle);
 
 void destroy_shape(shape_type_t shape_type, shape_t shape);
 
-v2f float_multiply_v2f(v2f v, float x);
-v2f add_two_v2f(v2f v1, v2f v2);
-float vector_norm(v2f vector);
+v2f_t float_multiply_v2f(v2f_t v, float x);
+v2f_t add_two_v2f(v2f_t v1, v2f_t v2);
+float vector_norm(v2f_t vector);
 double get_delta_time(sfClock *game_clock, double *prev_frame_time);
 int get_random_nb_between(int from, int min, int max, int epsilon);
-int contain_v2f(v2f min, v2f max, v2f ele);
+int contain_v2f(v2f_t min, v2f_t max, v2f_t ele);
 void destroy_scale(scale_t *scale);
 void set_rotation(shape_type_t shape_type, shape_t shape, float rotation);

@@ -13,7 +13,7 @@ static sfCircleShape *create_shape_start(void)
 {
     sfCircleShape *circle = sfCircleShape_create();
 
-    sfCircleShape_setPosition(circle, (v2f){550, 150});
+    sfCircleShape_setPosition(circle, (v2f_t){550, 150});
     sfCircleShape_setRadius(circle, 50);
     sfCircleShape_setFillColor(circle, sfColor_fromRGBA(230, 200, 180, 0));
     return circle;
@@ -23,7 +23,7 @@ static sfCircleShape *create_shape_end1(void)
 {
     sfCircleShape *circle = sfCircleShape_create();
 
-    sfCircleShape_setPosition(circle, (v2f){550, 150});
+    sfCircleShape_setPosition(circle, (v2f_t){550, 150});
     sfCircleShape_setRadius(circle, 50);
     sfCircleShape_setFillColor(circle, sfColor_fromRGBA(230, 200, 180, 0));
     return circle;
@@ -33,7 +33,7 @@ static sfCircleShape *create_shape_end2(void)
 {
     sfCircleShape *circle = sfCircleShape_create();
 
-    sfCircleShape_setPosition(circle, (v2f){750, 350});
+    sfCircleShape_setPosition(circle, (v2f_t){750, 350});
     sfCircleShape_setRadius(circle, 5);
     sfCircleShape_setFillColor(circle, sfColor_fromRGBA(230, 200, 180, 0));
     return circle;
@@ -58,7 +58,7 @@ anim_t *create_anim_charging(void)
     anim_set_batch_size(anim, 100);
     anim_set_duration(anim, 5);
     anim_set_speed(anim, 250);
-    anim_set_scale(anim, (v2f){1, 2});
+    anim_set_scale(anim, (v2f_t){1, 2});
     anim_set_color(anim, sfColor_fromRGBA(230, 100, 100, 10));
     anim_set_shape_start(anim, CIRCLE_OUTLINE, create_shape_start());
     anim_set_shape_end(anim, CIRCLE, create_shape_end1());

@@ -9,9 +9,9 @@
 #include <stdlib.h>
 #include <math.h>
 
-static v2f set_movement(v2f spawn_pos, v2f dest)
+static v2f_t set_movement(v2f_t spawn_pos, v2f_t dest)
 {
-    v2f direction = {dest.x - spawn_pos.x, dest.y - spawn_pos.y};
+    v2f_t direction = {dest.x - spawn_pos.x, dest.y - spawn_pos.y};
 
     float dir_norm = vector_norm(direction);
     return float_multiply_v2f(direction, 1 / dir_norm);
@@ -20,7 +20,7 @@ static v2f set_movement(v2f spawn_pos, v2f dest)
 static void set_destination(particles_t *part, anim_t *anim)
 {
     if (anim->shape_end_type == MIRROR) {
-        part->destination = (v2f){part->position.x + anim->mirror_offset.x,
+        part->destination = (v2f_t){part->position.x + anim->mirror_offset.x,
             part->position.y + anim->mirror_offset.y};
     } else {
         part->destination = get_random_pos(anim->shape_end,

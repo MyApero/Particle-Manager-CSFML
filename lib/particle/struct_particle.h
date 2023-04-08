@@ -7,12 +7,9 @@
 
 #pragma once
 
-typedef sfVector2f v2f;
+    #include <stdbool.h>
 
-typedef enum boolean {
-    FALSE,
-    TRUE
-} bool_t;
+typedef sfVector2f v2f_t;
 
 typedef enum shape_type {
     RECT,
@@ -30,23 +27,23 @@ typedef union shape {
 } shape_t;
 
 typedef struct scale {
-    v2f scale_modifier;
-    v2f scale_min;
-    v2f scale_max;
+    v2f_t scale_modifier;
+    v2f_t scale_min;
+    v2f_t scale_max;
 } scale_t;
 
 typedef struct particles {
     shape_type_t shape_type;
     shape_t shape;
-    v2f position;
-    v2f destination;
-    v2f move;
-    int speed;
+    v2f_t position;
+    v2f_t destination;
+    v2f_t move;
+    short speed;
     scale_t *scale_props;
     float rotation_modifier;
     sfColor color;
     double time_elapsed;
-    sfBool arrived;
+    bool arrived;
     struct particles *next;
 } particles_t;
 
@@ -65,27 +62,27 @@ typedef struct anim {
     int id;
     particles_t *particles;
     sfTexture *particle_texture;
-    sfBool shape_part_default;
+    bool shape_part_default;
     shape_type_t shape_part_type;
     shape_t shape_part;
-    sfBool shape_start_default;
+    bool shape_start_default;
     shape_type_t shape_start_type;
     shape_t shape_start;
-    sfBool shape_end_default;
+    bool shape_end_default;
     shape_type_t shape_end_type;
     shape_t shape_end;
-    v2f mirror_offset;
+    v2f_t mirror_offset;
     int speed;
     double spawn_delay_value;
     double spawn_delay;
     unsigned int batch_size;
     float duration;
     double time_elapsed;
-    v2f scale;
+    v2f_t scale;
     scale_t *scale_props;
     float rotation;
     sfColor color;
-    bool_t is_generating;
+    bool is_generating;
     struct anim *next;
     struct anim *previous;
 } anim_t;

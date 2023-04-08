@@ -8,7 +8,7 @@
 #include "particle.h"
 #include <math.h>
 
-static int is_particle_arrived(particles_t *part, v2f pos)
+static int is_particle_arrived(particles_t *part, v2f_t pos)
 {
     if (sqrt(pow(part->position.x - part->destination.x, 2) +
     pow(part->position.y - part->destination.y, 2)) <= sqrt(pow(pos.y -
@@ -19,7 +19,7 @@ static int is_particle_arrived(particles_t *part, v2f pos)
 
 int particles_move_or_ended(particles_t *part, double dt)
 {
-    v2f pos;
+    v2f_t pos;
 
     if (part == NULL)
         return 0;

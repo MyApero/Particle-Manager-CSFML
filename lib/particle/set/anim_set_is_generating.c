@@ -7,7 +7,7 @@
 
 #include "particle.h"
 
-void anim_set_is_generating(anim_t *anim, bool_t is_generating)
+void anim_set_is_generating(anim_t *anim, bool is_generating)
 {
     anim->is_generating = is_generating;
 }

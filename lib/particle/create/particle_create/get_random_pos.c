@@ -8,7 +8,7 @@
 #include "particle.h"
 #include <stdlib.h>
 
-v2f get_random_pos(shape_t shape, shape_type_t shape_type)
+v2f_t get_random_pos(shape_t shape, shape_type_t shape_type)
 {
     switch (shape_type) {
     case RECT:

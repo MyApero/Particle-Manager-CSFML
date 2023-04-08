@@ -18,6 +18,7 @@ SRC	=	set/anim_set_id.c \
 		set/anim_set_shape_end.c \
 		set/anim_set_speed.c \
 		set/anim_set_is_generating.c \
+\
 		create/anim_create.c \
 		create/anim_append.c \
 		create/particle_create/particle_create.c \
@@ -25,19 +26,23 @@ SRC	=	set/anim_set_id.c \
 		create/particle_create/get_from_rect.c \
 		create/particle_create/get_random_pos.c \
 		create/particle_create/set_particle_shape.c \
-		utils/v2f_operations.c \
-		utils/vector_norm.c \
-		utils/get_random_between.c \
-		utils/get_delta_time.c \
+\
 		update/anim_update.c \
 		update/particle_update/particle_update.c \
 		update/particle_update/particle_move_or_ended.c \
 		update/particle_update/particle_rotate.c \
-		anim_draw.c \
+\
+		draw/anim_draw.c \
+\
+		utils/v2f_operations.c \
+		utils/vector_norm.c \
+		utils/get_random_between.c \
+		utils/get_delta_time.c \
+		utils/is_anim_ended.c \
+\
 		destroy/destroy_shape.c \
 		destroy/anim_destroy.c \
-		utils/is_anim_ended.c \
-		particle_destroy.c
+		destroy/particle_destroy.c
 
 OBJ	=	$(SRC:.c=.o)
 

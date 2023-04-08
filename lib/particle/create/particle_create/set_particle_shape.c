@@ -11,7 +11,7 @@ static void set_rect_shape(particles_t *part, anim_t *anim)
 {
     sfFloatRect bounds = sfRectangleShape_getGlobalBounds(
         anim->shape_part.rect);
-    v2f center;
+    v2f_t center;
 
     center.x = bounds.width / 2;
     center.y = bounds.height / 2;
@@ -25,7 +25,7 @@ static void set_rect_shape(particles_t *part, anim_t *anim)
 static void set_circle_shape(particles_t *part, anim_t *anim)
 {
     float radius = sfCircleShape_getRadius(anim->shape_part.circle);
-    v2f center;
+    v2f_t center;
 
     center.x = radius / 2;
     center.y = radius / 2;
@@ -39,7 +39,7 @@ static void set_circle_shape(particles_t *part, anim_t *anim)
 static void set_sprite_shape(particles_t *part, anim_t *anim)
 {
     sfFloatRect bounds = sfSprite_getGlobalBounds(anim->shape_part.sprite);
-    v2f center;
+    v2f_t center;
 
     center.x = bounds.width / 2;
     center.y = bounds.height / 2;
@@ -51,7 +51,7 @@ static void set_sprite_shape(particles_t *part, anim_t *anim)
 
 void set_shape_part(particles_t *part, anim_t *anim)
 {
-    v2f center;
+    v2f_t center;
     part->shape_type = anim->shape_part_type;
     switch (part->shape_type) {
     case RECT_OUTLINE:

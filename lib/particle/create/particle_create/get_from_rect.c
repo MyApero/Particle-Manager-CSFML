@@ -9,9 +9,9 @@
 #include <SFML/Graphics/Rect.h>
 #include <stdlib.h>
 
-v2f get_from_rect(sfFloatRect bounds)
+v2f_t get_from_rect(sfFloatRect bounds)
 {
-    v2f new_pos;
+    v2f_t new_pos;
 
     if (abs((int)bounds.width) > 1e-5)
         new_pos.x = rand() % ((int)bounds.width) + bounds.left;

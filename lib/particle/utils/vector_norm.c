@@ -8,7 +8,7 @@
 #include "particle.h"
 #include <math.h>
 
-float vector_norm(v2f vector)
+float vector_norm(v2f_t vector)
 {
     return sqrt(pow(vector.x, 2) + pow(vector.y, 2));
 }

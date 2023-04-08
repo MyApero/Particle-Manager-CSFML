@@ -10,7 +10,7 @@
 
 static void enhance_anim(anim_t *anim)
 {
-    v2f scale;
+    v2f_t scale;
 
     switch (anim->id) {
     case EXP:

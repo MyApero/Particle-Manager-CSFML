@@ -21,7 +21,7 @@ void anim_set_shape_end(anim_t *anim, shape_type_t shape_type, void *shape)
         anim->shape_end.circle = shape; break;
     case MIRROR:
         anim->shape_end.rect = sfRectangleShape_copy(anim->shape_start.rect);
-        anim->mirror_offset = *(v2f *)shape;
+        anim->mirror_offset = *(v2f_t *)shape;
         sfRectangleShape_move(anim->shape_end.rect, anim->mirror_offset);
         break;
     default: break;
