@@ -7,21 +7,11 @@
 
 #include "particle.h"
 
-void anim_set_shape_start(anim_t *anim, shape_type_t shape_type, void *shape)
+void anim_set_shape_start(anim_t *anim, shape_t *shape_start)
 {
-    if (anim->shape_start_default) {
-        destroy_shape(anim->shape_start_type, anim->shape_start);
-        anim->shape_start_default = sfFalse;
-    }
-    anim->shape_start_type = shape_type;
-    switch (shape_type) {
-        case RECT_OUTLINE: case RECT:
-            anim->shape_start.rect = shape;
-            break;
-        case CIRCLE_OUTLINE: case CIRCLE:
-            anim->shape_start.circle = shape;
-            break;
-        default:
-            break;
-    };
+    if (shape_start == NULL)
+        return;
+    if (anim->shape_start->is_default)
+        destroy_shape(anim->shape_start);
+    anim->shape_start = shape_start;
 }

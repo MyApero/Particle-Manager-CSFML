@@ -5,9 +5,9 @@
 ** draw_manager
 */
 
-#include "../include/user.h"
+#include "user.h"
 
-void draw_manager(sfRenderWindow *window, anim_t *anims)
+void draw_manager(sfRenderWindow *window, anim_t *anims, sfSprite *capy)
 {
     anim_t *anim = anims;
 
@@ -15,5 +15,6 @@ void draw_manager(sfRenderWindow *window, anim_t *anims)
     for (; anim != NULL; anim = anim->next) {
         anim_draw(window, anim);
     }
+    sfRenderWindow_drawSprite(window, capy, NULL);
     sfRenderWindow_display(window);
 }

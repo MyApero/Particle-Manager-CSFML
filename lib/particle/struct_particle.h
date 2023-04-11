@@ -20,10 +20,17 @@ typedef enum shape_type {
     MIRROR
 } shape_type_t;
 
-typedef union shape {
+typedef union shape_union {
     sfRectangleShape *rect;
     sfCircleShape *circle;
     sfSprite *sprite;
+    v2f_t offset;
+} shape_union_t;
+
+typedef struct shape {
+    shape_type_t type;
+    shape_union_t body;
+    bool is_default;
 } shape_t;
 
 typedef struct scale {
@@ -32,9 +39,11 @@ typedef struct scale {
     v2f_t scale_max;
 } scale_t;
 
+typedef struct anim anim_t;
+
 typedef struct particles {
     shape_type_t shape_type;
-    shape_t shape;
+    shape_union_t shape;
     v2f_t position;
     v2f_t destination;
     v2f_t move;
@@ -44,6 +53,7 @@ typedef struct particles {
     sfColor color;
     double time_elapsed;
     bool arrived;
+    anim_t *anim;
     struct particles *next;
 } particles_t;
 
@@ -61,17 +71,13 @@ typedef struct particles {
 typedef struct anim {
     int id;
     particles_t *particles;
-    sfTexture *particle_texture;
-    bool shape_part_default;
-    shape_type_t shape_part_type;
-    shape_t shape_part;
-    bool shape_start_default;
-    shape_type_t shape_start_type;
-    shape_t shape_start;
-    bool shape_end_default;
-    shape_type_t shape_end_type;
-    shape_t shape_end;
-    v2f_t mirror_offset;
+    const sfTexture *particle_texture;
+
+    shape_t *shape_part;
+    shape_t *shape_start;
+    shape_t *shape_end;
+
+    bool follow_destination;
     int speed;
     double spawn_delay_value;
     double spawn_delay;

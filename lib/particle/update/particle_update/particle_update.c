@@ -7,7 +7,8 @@
 
 #include "particle.h"
 
-static void set_scale(shape_type_t shape_type, shape_t shape, scale_t **sca)
+static void set_scale(shape_type_t shape_type, shape_union_t shape,
+scale_t **sca)
 {
     v2f_t n_scale;
     scale_t *scale = *sca;
@@ -30,7 +31,8 @@ static void set_scale(shape_type_t shape_type, shape_t shape, scale_t **sca)
         scale->scale_modifier = (v2f_t){1.0, 1.0};
 }
 
-static void set_position(shape_type_t shape_type, shape_t shape, v2f_t pos)
+static void set_position(shape_type_t shape_type, shape_union_t shape,
+v2f_t pos)
 {
     switch (shape_type) {
         case RECT_OUTLINE: case RECT:
@@ -44,7 +46,7 @@ static void set_position(shape_type_t shape_type, shape_t shape, v2f_t pos)
     }
 }
 
-static void set_color(shape_type_t shape_type, shape_t shape,
+static void set_color(shape_type_t shape_type, shape_union_t shape,
 particles_t *particle)
 {
     switch (shape_type) {
@@ -73,8 +75,12 @@ int particle_update(particles_t *particle, double dt)
         return 0;
     if (particles_move_or_ended(particle, dt))
         return -1;
+    if (particle->anim->follow_destination) {
+        set_destination(particle, particle->anim);
+        particle->move = set_particle_movement(particle->position,
+            particle->destination);
+    }
     particle->time_elapsed += dt;
-
     apply_changes(particle);
     return 0;
 }

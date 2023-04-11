@@ -9,19 +9,25 @@ NAME	=	particle_manager
 
 SRC	=	src/main.c \
 		src/destroy_anims.c \
-		src/anims/anim_bubbles.c \
-		src/anims/anim_capy.c \
-		src/anims/anim_exp.c \
-		src/anims/anim_smoke.c \
-		src/anims/anim_rain.c \
-		src/anims/anim_charging.c \
+		src/anims/examples/anim_smoke.c \
+		src/anims/examples/anim_rain.c \
+		src/anims/examples/anim_exp.c \
+		src/anims/examples/anim_bubbles.c \
+		src/anims/examples/anim_capy.c \
+		src/anims/examples/anim_charging.c \
+		src/anims/create_anim_props.c \
+		src/anims/create_anims_props_list.c \
+		src/anims/append_anim_props.c \
+		src/anims/set_anim_props.c \
+		src/anims/get_anims_props.c \
+		src/anims/destroy_anims_props.c \
 		src/event_manager.c \
 		src/update_manager.c \
-		src/draw_manager.c
+		src/draw_manager.c \
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	=	-I./include -Wall -Wextra -g3  -fsanitize=address
+CFLAGS	=	-I./inc -Wall -Wextra -g3  -fsanitize=address
 
 LIB		=	-L./lib/ -lparticle
 

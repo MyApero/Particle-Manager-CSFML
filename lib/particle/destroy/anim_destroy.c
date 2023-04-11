@@ -10,7 +10,7 @@
 
 void destroy_scale(scale_t *scale)
 {
-    if (scale) {
+    if (scale != NULL) {
         free(scale);
     }
 }
@@ -20,8 +20,7 @@ static void destroy_particles(particles_t *particle)
     if (particle == NULL)
         return;
     destroy_particles(particle->next);
-    destroy_shape(particle->shape_type, particle->shape);
-    destroy_scale(particle->scale_props);
+    destroy_shape_part(particle->shape_type, particle->shape);
     free(particle);
 }
 
@@ -34,11 +33,13 @@ void anim_destroy(anim_t *anim)
     if (anim->next != NULL)
         anim->next->previous = anim->previous;
     destroy_particles(anim->particles);
-    destroy_shape(anim->shape_part_type, anim->shape_part);
-    destroy_shape(anim->shape_end_type, anim->shape_end);
-    destroy_shape(anim->shape_start_type, anim->shape_start);
+    if (anim->shape_part->is_default)
+        destroy_shape(anim->shape_part);
+    if (anim->shape_start->is_default)
+        destroy_shape(anim->shape_start);
+    if (anim->shape_end->is_default && !anim->follow_destination)
+        destroy_shape(anim->shape_end);
     destroy_scale(anim->scale_props);
-    sfTexture_destroy(anim->particle_texture);
     free(anim);
 }
 

@@ -7,7 +7,7 @@
 
 #include "particle.h"
 
-void set_rotation(shape_type_t shape_type, shape_t shape, float rotation)
+void set_rotation(shape_type_t shape_type, shape_union_t shape, float rotation)
 {
     switch (shape_type) {
         case RECT_OUTLINE: case RECT:

@@ -10,12 +10,12 @@
 static void set_rect_shape(particles_t *part, anim_t *anim)
 {
     sfFloatRect bounds = sfRectangleShape_getGlobalBounds(
-        anim->shape_part.rect);
+        anim->shape_part->body.rect);
     v2f_t center;
 
     center.x = bounds.width / 2;
     center.y = bounds.height / 2;
-    part->shape.rect = sfRectangleShape_copy(anim->shape_part.rect);
+    part->shape.rect = sfRectangleShape_copy(anim->shape_part->body.rect);
     sfRectangleShape_setOrigin(part->shape.rect, center);
     sfRectangleShape_setPosition(part->shape.rect, part->position);
     sfRectangleShape_setFillColor(part->shape.rect, part->color);
@@ -24,12 +24,12 @@ static void set_rect_shape(particles_t *part, anim_t *anim)
 
 static void set_circle_shape(particles_t *part, anim_t *anim)
 {
-    float radius = sfCircleShape_getRadius(anim->shape_part.circle);
+    float radius = sfCircleShape_getRadius(anim->shape_part->body.circle);
     v2f_t center;
 
     center.x = radius / 2;
     center.y = radius / 2;
-    part->shape.circle = sfCircleShape_copy(anim->shape_part.circle);
+    part->shape.circle = sfCircleShape_copy(anim->shape_part->body.circle);
     sfCircleShape_setOrigin(part->shape.circle, center);
     sfCircleShape_setPosition(part->shape.circle, part->position);
     sfCircleShape_setFillColor(part->shape.circle, part->color);
@@ -38,12 +38,13 @@ static void set_circle_shape(particles_t *part, anim_t *anim)
 
 static void set_sprite_shape(particles_t *part, anim_t *anim)
 {
-    sfFloatRect bounds = sfSprite_getGlobalBounds(anim->shape_part.sprite);
+    sfFloatRect bounds = sfSprite_getGlobalBounds(
+        anim->shape_part->body.sprite);
     v2f_t center;
 
     center.x = bounds.width / 2;
     center.y = bounds.height / 2;
-    part->shape.sprite = sfSprite_copy(anim->shape_part.sprite);
+    part->shape.sprite = sfSprite_copy(anim->shape_part->body.sprite);
     sfSprite_setOrigin(part->shape.sprite, center);
     sfSprite_setPosition(part->shape.sprite, part->position);
     sfSprite_setScale(part->shape.sprite, anim->scale);
@@ -52,7 +53,7 @@ static void set_sprite_shape(particles_t *part, anim_t *anim)
 void set_shape_part(particles_t *part, anim_t *anim)
 {
     v2f_t center;
-    part->shape_type = anim->shape_part_type;
+    part->shape_type = anim->shape_part->type;
     switch (part->shape_type) {
     case RECT_OUTLINE:
     case RECT:
@@ -65,5 +66,5 @@ void set_shape_part(particles_t *part, anim_t *anim)
     case SPRITE:
         set_sprite_shape(part, anim);
         break;
-    };
+    }
 }

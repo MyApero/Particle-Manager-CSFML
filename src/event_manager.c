@@ -5,28 +5,32 @@
 ** event_manager
 */
 
-#include "../include/user.h"
+#include "user.h"
 #include <SFML/System.h>
 #include <stdio.h>
 
-static void manage_keys(sfKeyCode key, anim_t **anims)
+static void manage_keys(sfKeyCode key, anim_t **anims, sfSprite *capy,
+anim_props_t *anims_props)
 {
-    if (key == sfKeyA) {
-        anim_append(anims, create_anim_smoke());
-    } if (key == sfKeyZ) {
-        anim_append(anims, create_anim_exp());
-    } if (key == sfKeyE) {
-        anim_append(anims, create_anim_bubbles());
-    } if (key == sfKeyR) {
-        anim_append(anims, create_anim_capy());
-    } if (key == sfKeyT) {
-        anim_append(anims, create_anim_rain());
-    } if (key == sfKeyY) {
-        anim_append(anims, create_anim_charging());
-    }
+    if (key == sfKeyA)
+        anim_append(anims, create_smoke(get_anims_props(anims_props, SMOKE)));
+    if (key == sfKeyZ)
+        anim_append(anims, create_exp(get_anims_props(anims_props, EXP)));
+    if (key == sfKeyE)
+        anim_append(anims, create_bubbles(get_anims_props(anims_props,
+            BUBBLES)));
+    if (key == sfKeyR)
+        anim_append(anims, create_capy(get_anims_props(anims_props, CAPY_ID),
+            sfSprite_getTexture(capy)));
+    if (key == sfKeyT)
+        anim_append(anims, create_rain(get_anims_props(anims_props, RAIN)));
+    if (key == sfKeyY)
+        anim_append(anims, create_charging(get_anims_props(anims_props,
+            CHARGING)));
 }
 
-void event_manager(sfRenderWindow *window, anim_t **anims)
+void event_manager(sfRenderWindow *window, anim_t **anims, sfSprite *capy,
+anim_props_t *anims_props)
 {
     sfEvent event;
     sfVector2i mpos;
@@ -36,7 +40,7 @@ void event_manager(sfRenderWindow *window, anim_t **anims)
         event.key.code == sfKeyEscape))
             sfRenderWindow_close(window);
         if (event.type == sfEvtKeyPressed)
-            manage_keys(event.key.code, anims);
+            manage_keys(event.key.code, anims, capy, anims_props);
         if (event.type == sfEvtMouseButtonPressed) {
             mpos = sfMouse_getPositionRenderWindow(window);
             printf("mouse down x%d y%d\n", mpos.x, mpos.y);

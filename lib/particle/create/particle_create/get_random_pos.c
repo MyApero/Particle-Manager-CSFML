@@ -8,20 +8,21 @@
 #include "particle.h"
 #include <stdlib.h>
 
-v2f_t get_random_pos(shape_t shape, shape_type_t shape_type)
+v2f_t get_random_pos(shape_t *shape)
 {
-    switch (shape_type) {
+    switch (shape->type) {
     case RECT:
-        return get_from_rect(sfRectangleShape_getGlobalBounds(shape.rect));
+        return get_from_rect(
+            sfRectangleShape_getGlobalBounds(shape->body.rect));
     case RECT_OUTLINE:
-        return sfRectangleShape_getPoint(shape.rect,
-            rand() % sfRectangleShape_getPointCount(shape.rect));
+        return sfRectangleShape_getPoint(shape->body.rect,
+            rand() % sfRectangleShape_getPointCount(shape->body.rect));
     case CIRCLE:
-        return get_from_circle(shape.circle);
+        return get_from_circle(shape->body.circle);
     case CIRCLE_OUTLINE:
-        return get_pos_from_circle_outline(shape.circle);
+        return get_pos_from_circle_outline(shape->body.circle);
     case SPRITE:
-        return get_from_rect(sfSprite_getGlobalBounds(shape.sprite));
+        return get_from_rect(sfSprite_getGlobalBounds(shape->body.sprite));
     default:
         break;
     };

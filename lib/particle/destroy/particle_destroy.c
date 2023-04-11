@@ -12,6 +12,6 @@ void particle_destroy(particles_t *particle)
 {
     if (particle == NULL)
         return;
-    destroy_shape(particle->shape_type, particle->shape);
+    destroy_shape_part(particle->shape_type, particle->shape);
     free(particle);
 }

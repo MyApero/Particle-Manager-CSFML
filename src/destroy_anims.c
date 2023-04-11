@@ -5,7 +5,7 @@
 ** free_anims
 */
 
-#include "../include/user.h"
+#include "user.h"
 #include <stdlib.h>
 
 void free_anims(anim_t *anim)

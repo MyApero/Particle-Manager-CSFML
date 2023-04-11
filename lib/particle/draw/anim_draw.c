@@ -9,7 +9,7 @@
 #include <SFML/Graphics/RenderWindow.h>
 
 static void draw_shape(sfRenderWindow *win, shape_type_t shape_type,
-shape_t shape)
+shape_union_t shape)
 {
     switch (shape_type) {
     case RECT_OUTLINE: case RECT:
@@ -27,15 +27,17 @@ shape_t shape)
 
 }
 
-void anim_draw(sfRenderWindow *win, anim_t *animation)
+void anim_draw(sfRenderWindow *win, anim_t *anim)
 {
     particles_t *particle;
 
-    if (animation == NULL)
+    if (anim == NULL)
         return;
-    particle = animation->particles;
-    sfRenderWindow_drawRectangleShape(win, animation->shape_start.rect, NULL);
-    sfRenderWindow_drawRectangleShape(win, animation->shape_end.rect, NULL);
+    particle = anim->particles;
+    sfRenderWindow_drawRectangleShape(win, anim->shape_start->body.rect, NULL);
+    if (anim->shape_end->type != MIRROR)
+        sfRenderWindow_drawRectangleShape(win, anim->shape_end->body.rect,
+            NULL);
     for (; particle != NULL; particle = particle->next) {
         if (particle->arrived)
             continue;

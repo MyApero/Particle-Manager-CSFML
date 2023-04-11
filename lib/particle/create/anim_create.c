@@ -9,7 +9,8 @@
 #include <SFML/Graphics/RectangleShape.h>
 #include <stdlib.h>
 
-static sfRectangleShape *create_default_shape(sfColor color, v2f_t size, v2f_t pos)
+static sfRectangleShape *create_default_shape(sfColor color, v2f_t size,
+v2f_t pos)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
 
@@ -21,20 +22,24 @@ static sfRectangleShape *create_default_shape(sfColor color, v2f_t size, v2f_t p
 
 static void set_anim_shapes(anim_t *anim)
 {
-    anim->shape_part_default = sfTrue;
-    anim->shape_part_type = RECT;
-    anim->shape_part.rect = create_default_shape(anim->color,
+    anim->shape_part = malloc(sizeof(shape_t));
+    anim->shape_part->is_default = sfTrue;
+    anim->shape_part->type = RECT;
+    anim->shape_part->body.rect = create_default_shape(anim->color,
         (v2f_t){10, 10}, (v2f_t){0, 0});
-    anim->shape_start_default = sfTrue;
-    anim->shape_start_type = RECT;
-    anim->shape_start.rect = create_default_shape(anim->color,
+    anim->shape_start = malloc(sizeof(shape_t));
+    anim->shape_start->is_default = sfTrue;
+    anim->shape_start->type = RECT;
+    anim->shape_start->body.rect = create_default_shape(anim->color,
         (v2f_t){SHAPE_SIZE}, (v2f_t){SHAPE_START});
-    anim->shape_end_default = sfTrue;
-    anim->shape_end_type = RECT;
-    anim->shape_end.rect = create_default_shape(anim->color,
+    anim->shape_end = malloc(sizeof(shape_t));
+    anim->shape_end->is_default = sfTrue;
+    anim->shape_end->type = RECT;
+    anim->shape_end->body.rect = create_default_shape(anim->color,
         (v2f_t){SHAPE_SIZE}, (v2f_t){SHAPE_END});
-    anim->mirror_offset = (v2f_t){0, 0};
+    anim->shape_end->is_default = true;
     anim->scale_props = NULL;
+    anim->follow_destination = false;
 }
 
 static void set_anim_properties(anim_t *anim)

@@ -11,6 +11,7 @@
         "rect.h": "c",
         "circleshape.h": "c",
         "cmath": "c",
-        "renderwindow.h": "c"
+        "renderwindow.h": "c",
+        "system.h": "c"
     }
 }

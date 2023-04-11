@@ -38,10 +38,9 @@ void anim_destroy(anim_t *anim);
 void anim_destroy_secure(anim_t **anim_list, anim_t *anim);
 
 void anim_set_id(anim_t *anim, int id);
-void anim_set_shape_part(anim_t *anim, shape_type_t shape_type,
-void *shape);
-void anim_set_shape_start(anim_t *anim, shape_type_t shape_type, void *shape);
-void anim_set_shape_end(anim_t *anim, shape_type_t shape_type, void *shape);
+void anim_set_shape_part(anim_t *anim, shape_t *shape_part);
+void anim_set_shape_start(anim_t *anim, shape_t *shape_start);
+void anim_set_shape_end(anim_t *anim, shape_t *shape_end);
 void anim_set_speed(anim_t *anim, int speed);
 void anim_set_frequency(anim_t *anim, float frequency);
 void anim_set_batch_size(anim_t *anim, unsigned int batch_size);
@@ -56,15 +55,19 @@ void anim_set_rgb(anim_t *anim);
 
 particles_t *particle_create(anim_t *anim);
 void set_shape_part(particles_t *part, anim_t *anim);
+v2f_t set_particle_movement(v2f_t spawn_pos, v2f_t dest);
+void set_destination(particles_t *part, anim_t *anim);
 int particles_move_or_ended(particles_t *part, double dt);
 int particle_update(particles_t *particle, double dt);
 v2f_t get_from_rect(sfFloatRect bounds);
 v2f_t get_from_circle(sfCircleShape *circle);
 v2f_t get_pos_from_circle_outline(sfCircleShape *circle);
-v2f_t get_random_pos(shape_t shape, shape_type_t shape_type);
+v2f_t get_random_pos(shape_t *shape);
+v2f_t get_sprite_center(sfSprite *sprite);
 void particle_destroy(particles_t *particle);
 
-void destroy_shape(shape_type_t shape_type, shape_t shape);
+void destroy_shape(shape_t *shape);
+void destroy_shape_part(shape_type_t shape_type, shape_union_t shape);
 
 v2f_t float_multiply_v2f(v2f_t v, float x);
 v2f_t add_two_v2f(v2f_t v1, v2f_t v2);
@@ -73,4 +76,5 @@ double get_delta_time(sfClock *game_clock, double *prev_frame_time);
 int get_random_nb_between(int from, int min, int max, int epsilon);
 int contain_v2f(v2f_t min, v2f_t max, v2f_t ele);
 void destroy_scale(scale_t *scale);
-void set_rotation(shape_type_t shape_type, shape_t shape, float rotation);
+void set_rotation(shape_type_t shape_type, shape_union_t shape,
+float rotation);

@@ -25,7 +25,10 @@ SRC	=	set/anim_set_id.c \
 		create/particle_create/get_from_circle.c \
 		create/particle_create/get_from_rect.c \
 		create/particle_create/get_random_pos.c \
+		create/particle_create/get_sprite_center.c \
 		create/particle_create/set_particle_shape.c \
+		create/particle_create/set_particle_movement.c \
+		create/particle_create/set_particle_destination.c \
 \
 		update/anim_update.c \
 		update/particle_update/particle_update.c \
@@ -65,9 +68,9 @@ $(OBJ):	%.o: %.c
 	@echo -e "$(BOLD)$(BLUE)File $(RED)$@$(BLUE) created.$(WHITE)"
 
 $(NAME):	$(OBJ)
-		@mkdir -p ../../include
-		@cp particle.h ../../include/
-		@cp struct_particle.h ../../include/
+		@mkdir -p ../../inc
+		@cp particle.h ../../inc/
+		@cp struct_particle.h ../../inc/
 		@ar rc $(NAME) $(OBJ)
 		@cp $(NAME) ../
 		@echo -e "$(BOLD)$(GREEN) -- LIB SUCCESSFULLY COMPILED -- $(WHITE)"
