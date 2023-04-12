@@ -5,7 +5,7 @@
 ** destroy_anims_props
 */
 
-#include "user.h"
+#include "particle.h"
 #include <stdlib.h>
 
 void destroy_anims_props(anim_props_t *anims_props)

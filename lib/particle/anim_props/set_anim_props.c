@@ -5,7 +5,7 @@
 ** set_anim_props
 */
 
-#include "user.h"
+#include "particle.h"
 
 void set_anim_props(anim_t *anim, anim_props_t *props)
 {

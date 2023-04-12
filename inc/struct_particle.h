@@ -39,6 +39,15 @@ typedef struct scale {
     v2f_t scale_max;
 } scale_t;
 
+typedef struct anim_props {
+    int type;
+    shape_t *shape_part;
+    shape_t *shape_start;
+    shape_t *shape_end;
+    bool follow_dest;
+    struct anim_props *next;
+} anim_props_t;
+
 typedef struct anim anim_t;
 
 typedef struct particles {

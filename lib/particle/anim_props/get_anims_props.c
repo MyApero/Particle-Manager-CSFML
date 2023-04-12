@@ -5,9 +5,9 @@
 ** get_anims_props
 */
 
-#include "user.h"
+#include "particle.h"
 
-anim_props_t *get_anims_props(anim_props_t *anims_props, anim_type_t id)
+anim_props_t *get_anims_props(anim_props_t *anims_props, int id)
 {
     if (anims_props == NULL)
         return NULL;

@@ -25,15 +25,6 @@ typedef enum anim_type {
     CHARGING
 } anim_type_t;
 
-typedef struct anim_props {
-    anim_type_t type;
-    shape_t *shape_part;
-    shape_t *shape_start;
-    shape_t *shape_end;
-    bool follow_dest;
-    struct anim_props *next;
-} anim_props_t;
-
 void initialize(void);
 anim_props_t *create_anim_props_smoke(void);
 anim_t *create_smoke(anim_props_t *props);
@@ -49,14 +40,6 @@ anim_props_t *create_anim_props_charging(void);
 anim_t *create_charging(anim_props_t *props);
 
 anim_props_t *create_anims_props_list(void);
-void append_anim_props(anim_props_t **anim_props, anim_props_t *to_add);
-anim_props_t *create_anim_props(anim_type_t type, shape_t *shape_part,
-shape_t *shape_start, shape_t *shape_end);
-void set_anim_props(anim_t *anim, anim_props_t *props);
-anim_props_t *get_anims_props(anim_props_t *anims_props, anim_type_t id);
-void destroy_anims_props(anim_props_t *anims_props);
-
-void free_anims(anim_t *anims);
 
 void event_manager(sfRenderWindow *window, anim_t **anims, sfSprite *capy,
 anim_props_t *anims_props);

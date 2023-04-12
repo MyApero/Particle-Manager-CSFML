@@ -66,8 +66,16 @@ v2f_t get_random_pos(shape_t *shape);
 v2f_t get_sprite_center(sfSprite *sprite);
 void particle_destroy(particles_t *particle);
 
+void append_anim_props(anim_props_t **anim_props, anim_props_t *to_add);
+anim_props_t *create_anim_props(int type, shape_t *shape_part,
+shape_t *shape_start, shape_t *shape_end);
+void set_anim_props(anim_t *anim, anim_props_t *props);
+anim_props_t *get_anims_props(anim_props_t *anims_props, int id);
+
 void destroy_shape(shape_t *shape);
 void destroy_shape_part(shape_type_t shape_type, shape_union_t shape);
+void destroy_anims_props(anim_props_t *anims_props);
+void free_anims(anim_t *anim);
 
 v2f_t float_multiply_v2f(v2f_t v, float x);
 v2f_t add_two_v2f(v2f_t v1, v2f_t v2);

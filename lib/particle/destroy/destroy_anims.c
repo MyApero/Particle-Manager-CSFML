@@ -5,7 +5,7 @@
 ** free_anims
 */
 
-#include "user.h"
+#include "particle.h"
 #include <stdlib.h>
 
 void free_anims(anim_t *anim)

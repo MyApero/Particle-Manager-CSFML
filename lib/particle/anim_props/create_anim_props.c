@@ -5,10 +5,10 @@
 ** create_anim_props
 */
 
-#include "user.h"
+#include "particle.h"
 #include <stdlib.h>
 
-anim_props_t *create_anim_props(anim_type_t type, shape_t *shape_part,
+anim_props_t *create_anim_props(int type, shape_t *shape_part,
 shape_t *shape_start, shape_t *shape_end)
 {
     anim_props_t *anim_props = malloc(sizeof(anim_props_t));

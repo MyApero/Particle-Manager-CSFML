@@ -35,6 +35,11 @@ SRC	=	set/anim_set_id.c \
 		update/particle_update/particle_move_or_ended.c \
 		update/particle_update/particle_rotate.c \
 \
+		anim_props/create_anim_props.c \
+		anim_props/append_anim_props.c \
+		anim_props/set_anim_props.c \
+		anim_props/get_anims_props.c \
+\
 		draw/anim_draw.c \
 \
 		utils/v2f_operations.c \
@@ -44,7 +49,9 @@ SRC	=	set/anim_set_id.c \
 		utils/is_anim_ended.c \
 \
 		destroy/destroy_shape.c \
+		destroy/destroy_anims.c \
 		destroy/anim_destroy.c \
+		destroy/destroy_anims_props.c \
 		destroy/particle_destroy.c
 
 OBJ	=	$(SRC:.c=.o)
